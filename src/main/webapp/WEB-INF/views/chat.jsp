@@ -1797,7 +1797,7 @@
 
             <!-- start chat conversation section -->
             <div class="w-100">
-                <div id="sender" sender_id="" class="p-3 p-lg-4 border-bottom">
+                <div id="sender" sender_id="${}" class="p-3 p-lg-4 border-bottom">
                     <div class="row align-items-center">
                         <div class="col-sm-4 col-8">
                             <div class="media align-items-center">
