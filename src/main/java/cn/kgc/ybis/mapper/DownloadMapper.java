@@ -11,7 +11,7 @@ public interface DownloadMapper {
 
     int deleteByExample(DownloadExample example);
 
-    int deleteByPrimaryKey(Long downId);
+    int deleteByPrimaryKey(Integer downId);
 
     int insert(Download record);
 
@@ -19,7 +19,7 @@ public interface DownloadMapper {
 
     List<Download> selectByExample(DownloadExample example);
 
-    Download selectByPrimaryKey(Long downId);
+    Download selectByPrimaryKey(Integer downId);
 
     int updateByExampleSelective(@Param("record") Download record, @Param("example") DownloadExample example);
 

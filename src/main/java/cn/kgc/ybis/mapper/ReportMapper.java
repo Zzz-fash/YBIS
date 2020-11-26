@@ -11,7 +11,7 @@ public interface ReportMapper {
 
     int deleteByExample(ReportExample example);
 
-    int deleteByPrimaryKey(Long rId);
+    int deleteByPrimaryKey(Integer rId);
 
     int insert(Report record);
 
@@ -19,7 +19,7 @@ public interface ReportMapper {
 
     List<Report> selectByExample(ReportExample example);
 
-    Report selectByPrimaryKey(Long rId);
+    Report selectByPrimaryKey(Integer rId);
 
     int updateByExampleSelective(@Param("record") Report record, @Param("example") ReportExample example);
 
