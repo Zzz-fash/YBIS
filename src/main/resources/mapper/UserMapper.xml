@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.ybis.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="cn.kgc.ybis.pojo.User" >
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="u_name" property="uName" jdbcType="VARCHAR" />
+    <result column="u_password" property="uPassword" jdbcType="VARCHAR" />
+    <result column="u_phone" property="uPhone" jdbcType="VARCHAR" />
+    <result column="u_address" property="uAddress" jdbcType="VARCHAR" />
+    <result column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="u_date" property="uDate" jdbcType="DATE" />
+    <result column="u_path" property="uPath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    u_id, u_name, u_password, u_phone, u_address, c_id, status, u_date, u_path
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.kgc.ybis.pojo.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where u_id = #{uId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where u_id = #{uId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.kgc.ybis.pojo.UserExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.kgc.ybis.pojo.User" >
+    insert into user (u_id, u_name, u_password, 
+      u_phone, u_address, c_id, 
+      status, u_date, u_path)
+    values (#{uId,jdbcType=INTEGER}, #{uName,jdbcType=VARCHAR}, #{uPassword,jdbcType=VARCHAR}, 
+      #{uPhone,jdbcType=VARCHAR}, #{uAddress,jdbcType=VARCHAR}, #{cId,jdbcType=INTEGER}, 
+      #{status,jdbcType=VARCHAR}, #{uDate,jdbcType=DATE}, #{uPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.kgc.ybis.pojo.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="uName != null" >
+        u_name,
+      </if>
+      <if test="uPassword != null" >
+        u_password,
+      </if>
+      <if test="uPhone != null" >
+        u_phone,
+      </if>
+      <if test="uAddress != null" >
+        u_address,
+      </if>
+      <if test="cId != null" >
+        c_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="uDate != null" >
+        u_date,
+      </if>
+      <if test="uPath != null" >
+        u_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uName != null" >
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null" >
+        #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uPhone != null" >
+        #{uPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="uAddress != null" >
+        #{uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="uDate != null" >
+        #{uDate,jdbcType=DATE},
+      </if>
+      <if test="uPath != null" >
+        #{uPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.kgc.ybis.pojo.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.uId != null" >
+        u_id = #{record.uId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uName != null" >
+        u_name = #{record.uName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uPassword != null" >
+        u_password = #{record.uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uPhone != null" >
+        u_phone = #{record.uPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAddress != null" >
+        u_address = #{record.uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cId != null" >
+        c_id = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uDate != null" >
+        u_date = #{record.uDate,jdbcType=DATE},
+      </if>
+      <if test="record.uPath != null" >
+        u_path = #{record.uPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set u_id = #{record.uId,jdbcType=INTEGER},
+      u_name = #{record.uName,jdbcType=VARCHAR},
+      u_password = #{record.uPassword,jdbcType=VARCHAR},
+      u_phone = #{record.uPhone,jdbcType=VARCHAR},
+      u_address = #{record.uAddress,jdbcType=VARCHAR},
+      c_id = #{record.cId,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=VARCHAR},
+      u_date = #{record.uDate,jdbcType=DATE},
+      u_path = #{record.uPath,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.kgc.ybis.pojo.User" >
+    update user
+    <set >
+      <if test="uName != null" >
+        u_name = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null" >
+        u_password = #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uPhone != null" >
+        u_phone = #{uPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="uAddress != null" >
+        u_address = #{uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cId != null" >
+        c_id = #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="uDate != null" >
+        u_date = #{uDate,jdbcType=DATE},
+      </if>
+      <if test="uPath != null" >
+        u_path = #{uPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.kgc.ybis.pojo.User" >
+    update user
+    set u_name = #{uName,jdbcType=VARCHAR},
+      u_password = #{uPassword,jdbcType=VARCHAR},
+      u_phone = #{uPhone,jdbcType=VARCHAR},
+      u_address = #{uAddress,jdbcType=VARCHAR},
+      c_id = #{cId,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      u_date = #{uDate,jdbcType=DATE},
+      u_path = #{uPath,jdbcType=VARCHAR}
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+</mapper>
