@@ -31,7 +31,7 @@
         <property name="configLocation" value="classpath:myBatis-config.xml"/>
         <property name="mapperLocations">
             <list>
-                <!--<value>classpath:mapper/*Mapper.xml</value>-->
+                <value>classpath:mapper/*Mapper.xml</value>
             </list>
         </property>
     </bean>
@@ -60,5 +60,5 @@
         <aop:pointcut id="serviceMethod" expression="execution(* cn.kgc.ybis.service..*.*(..))"/>
         <aop:advisor advice-ref="txadvice" pointcut-ref="serviceMethod"/>
     </aop:config>
-
+<context:component-scan base-package="cn.kgc.ybis.service"></context:component-scan>
 </beans>
