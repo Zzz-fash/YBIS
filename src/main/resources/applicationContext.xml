@@ -37,7 +37,7 @@
     </bean>
     <!--自动注入mapper可以不用写实现类-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
-        <property name="basePackage" value="com.kgc.springmvc.mapper"></property>
+        <property name="basePackage" value="cn.kgc.ybis.mapper"></property>
     </bean>
 
     <!--包扫描-->
@@ -57,7 +57,7 @@
     </tx:advice>
     <!--配置切面-->
     <aop:config>
-        <aop:pointcut id="serviceMethod" expression="execution(* com.kgc.springmvc.service..*.*(..))"/>
+        <aop:pointcut id="serviceMethod" expression="execution(* cn.kgc.ybis.service..*.*(..))"/>
         <aop:advisor advice-ref="txadvice" pointcut-ref="serviceMethod"/>
     </aop:config>
 
