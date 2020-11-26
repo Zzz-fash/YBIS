@@ -66,7 +66,7 @@
                 <a href="duty_index.jsp" target="kindergarten"> <span class="iconfont icon-kaoqin"></span><span>考勤管理</span></a>
             </li>
             <li>
-                <a href="notice_index.jsp" target="kindergarten"><span class="iconfont icon-notice"></span> <span>公告管理</span></a>
+                <a href="notice_index.do" target="kindergarten"><span class="iconfont icon-notice"></span> <span>公告管理</span></a>
             </li>
         </ul>
     </div>

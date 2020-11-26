@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +17,14 @@
     </style>
 </head>
 <body>
+<%-----------------------------------------form 表单区域------------------------------------------%>
+<form action="notice_send.do" method="post">
     <div class="container-fluid">
+            <P style="color: #00CE68; margin-left: 500px;size: B4 " >${sendMsg}</P>
         <div class="row">
             <div class="notice_input">
-                <textarea name="" id="notice_text" placeholder="请输入公告内容"></textarea>
+                <textarea name="n_name" id="notice_text" style="width: 500px;height: 40px;font-family: 黑体" placeholder="公告主题"></textarea>
+                <textarea name="n_content" id="notice_text" placeholder="请输入公告内容"></textarea>
                 <div id="notice_type">
                     <i class="iconfont icon-biaoti"></i>
                     <i class="iconfont icon-bold"></i>
@@ -35,8 +40,7 @@
                             <li>个人邮件</li>
                         </ul>
                     </div>
-                    <span id="notice_count">0/140</span>
-                    <button id="notice_announce">发布公告</button>
+                    <input type="submit" class="iconfont" id="notice_announce" value="发布公告"/>
                 </div>
             </div>
         </div>
@@ -76,6 +80,9 @@
             </ul>
         </div>
     </div>
+</form>
+<%-----------------------------------------/form 表单区域------------------------------------------%>
+
     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content notice_email">
