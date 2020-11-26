@@ -403,7 +403,12 @@
 
                                 <c:forEach items="${receiver}" var="account" varStatus="i">
                                     <li>
-                                        <a href="#">
+                                        <c:if test="${role == 'user'}}">
+                                            <a id="${account.tId}">
+                                        </c:if>
+                                        <c:if test="${role == 'teacher'}">
+                                            <a id="${account.uId}">
+                                        </c:if>
                                             <div class="media">
                                                 <div class="chat-user-img align-self-center mr-3">
                                                     <c:if test="${role eq 'user'}">
@@ -1815,7 +1820,7 @@
     <!-- end chat-leftsidebar -->
 
     <!-- Start User chat -->
-    <div class="user-chat w-100">
+    <div hidden="hidden" class="user-chat w-100">
         <div class="d-lg-flex">
 
             <!-- start chat conversation section -->
