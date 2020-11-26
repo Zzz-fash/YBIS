@@ -3,14 +3,14 @@ package cn.kgc.ybis.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassExample {
+public class CommentExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ClassExample() {
+    public CommentExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -104,253 +104,313 @@ public class ClassExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andCIdIsNull() {
-            addCriterion("c_id is null");
+        public Criteria andComIdIsNull() {
+            addCriterion("com_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andCIdIsNotNull() {
-            addCriterion("c_id is not null");
+        public Criteria andComIdIsNotNull() {
+            addCriterion("com_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCIdEqualTo(Integer value) {
-            addCriterion("c_id =", value, "cId");
+        public Criteria andComIdEqualTo(Integer value) {
+            addCriterion("com_id =", value, "comId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdNotEqualTo(Integer value) {
-            addCriterion("c_id <>", value, "cId");
+        public Criteria andComIdNotEqualTo(Integer value) {
+            addCriterion("com_id <>", value, "comId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdGreaterThan(Integer value) {
-            addCriterion("c_id >", value, "cId");
+        public Criteria andComIdGreaterThan(Integer value) {
+            addCriterion("com_id >", value, "comId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("c_id >=", value, "cId");
+        public Criteria andComIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("com_id >=", value, "comId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdLessThan(Integer value) {
-            addCriterion("c_id <", value, "cId");
+        public Criteria andComIdLessThan(Integer value) {
+            addCriterion("com_id <", value, "comId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdLessThanOrEqualTo(Integer value) {
-            addCriterion("c_id <=", value, "cId");
+        public Criteria andComIdLessThanOrEqualTo(Integer value) {
+            addCriterion("com_id <=", value, "comId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdIn(List<Integer> values) {
-            addCriterion("c_id in", values, "cId");
+        public Criteria andComIdIn(List<Integer> values) {
+            addCriterion("com_id in", values, "comId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdNotIn(List<Integer> values) {
-            addCriterion("c_id not in", values, "cId");
+        public Criteria andComIdNotIn(List<Integer> values) {
+            addCriterion("com_id not in", values, "comId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdBetween(Integer value1, Integer value2) {
-            addCriterion("c_id between", value1, value2, "cId");
+        public Criteria andComIdBetween(Integer value1, Integer value2) {
+            addCriterion("com_id between", value1, value2, "comId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("c_id not between", value1, value2, "cId");
+        public Criteria andComIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("com_id not between", value1, value2, "comId");
             return (Criteria) this;
         }
 
-        public Criteria andCNameIsNull() {
-            addCriterion("c_name is null");
+        public Criteria andComContentIsNull() {
+            addCriterion("com_content is null");
             return (Criteria) this;
         }
 
-        public Criteria andCNameIsNotNull() {
-            addCriterion("c_name is not null");
+        public Criteria andComContentIsNotNull() {
+            addCriterion("com_content is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCNameEqualTo(String value) {
-            addCriterion("c_name =", value, "cName");
+        public Criteria andComContentEqualTo(String value) {
+            addCriterion("com_content =", value, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameNotEqualTo(String value) {
-            addCriterion("c_name <>", value, "cName");
+        public Criteria andComContentNotEqualTo(String value) {
+            addCriterion("com_content <>", value, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameGreaterThan(String value) {
-            addCriterion("c_name >", value, "cName");
+        public Criteria andComContentGreaterThan(String value) {
+            addCriterion("com_content >", value, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameGreaterThanOrEqualTo(String value) {
-            addCriterion("c_name >=", value, "cName");
+        public Criteria andComContentGreaterThanOrEqualTo(String value) {
+            addCriterion("com_content >=", value, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameLessThan(String value) {
-            addCriterion("c_name <", value, "cName");
+        public Criteria andComContentLessThan(String value) {
+            addCriterion("com_content <", value, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameLessThanOrEqualTo(String value) {
-            addCriterion("c_name <=", value, "cName");
+        public Criteria andComContentLessThanOrEqualTo(String value) {
+            addCriterion("com_content <=", value, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameLike(String value) {
-            addCriterion("c_name like", value, "cName");
+        public Criteria andComContentLike(String value) {
+            addCriterion("com_content like", value, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameNotLike(String value) {
-            addCriterion("c_name not like", value, "cName");
+        public Criteria andComContentNotLike(String value) {
+            addCriterion("com_content not like", value, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameIn(List<String> values) {
-            addCriterion("c_name in", values, "cName");
+        public Criteria andComContentIn(List<String> values) {
+            addCriterion("com_content in", values, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameNotIn(List<String> values) {
-            addCriterion("c_name not in", values, "cName");
+        public Criteria andComContentNotIn(List<String> values) {
+            addCriterion("com_content not in", values, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameBetween(String value1, String value2) {
-            addCriterion("c_name between", value1, value2, "cName");
+        public Criteria andComContentBetween(String value1, String value2) {
+            addCriterion("com_content between", value1, value2, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andCNameNotBetween(String value1, String value2) {
-            addCriterion("c_name not between", value1, value2, "cName");
+        public Criteria andComContentNotBetween(String value1, String value2) {
+            addCriterion("com_content not between", value1, value2, "comContent");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdIsNull() {
-            addCriterion("tm_id is null");
+        public Criteria andDIdIsNull() {
+            addCriterion("d_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdIsNotNull() {
-            addCriterion("tm_id is not null");
+        public Criteria andDIdIsNotNull() {
+            addCriterion("d_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdEqualTo(Integer value) {
-            addCriterion("tm_id =", value, "tmId");
+        public Criteria andDIdEqualTo(Integer value) {
+            addCriterion("d_id =", value, "dId");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdNotEqualTo(Integer value) {
-            addCriterion("tm_id <>", value, "tmId");
+        public Criteria andDIdNotEqualTo(Integer value) {
+            addCriterion("d_id <>", value, "dId");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdGreaterThan(Integer value) {
-            addCriterion("tm_id >", value, "tmId");
+        public Criteria andDIdGreaterThan(Integer value) {
+            addCriterion("d_id >", value, "dId");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("tm_id >=", value, "tmId");
+        public Criteria andDIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("d_id >=", value, "dId");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdLessThan(Integer value) {
-            addCriterion("tm_id <", value, "tmId");
+        public Criteria andDIdLessThan(Integer value) {
+            addCriterion("d_id <", value, "dId");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdLessThanOrEqualTo(Integer value) {
-            addCriterion("tm_id <=", value, "tmId");
+        public Criteria andDIdLessThanOrEqualTo(Integer value) {
+            addCriterion("d_id <=", value, "dId");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdIn(List<Integer> values) {
-            addCriterion("tm_id in", values, "tmId");
+        public Criteria andDIdIn(List<Integer> values) {
+            addCriterion("d_id in", values, "dId");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdNotIn(List<Integer> values) {
-            addCriterion("tm_id not in", values, "tmId");
+        public Criteria andDIdNotIn(List<Integer> values) {
+            addCriterion("d_id not in", values, "dId");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdBetween(Integer value1, Integer value2) {
-            addCriterion("tm_id between", value1, value2, "tmId");
+        public Criteria andDIdBetween(Integer value1, Integer value2) {
+            addCriterion("d_id between", value1, value2, "dId");
             return (Criteria) this;
         }
 
-        public Criteria andTmIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("tm_id not between", value1, value2, "tmId");
+        public Criteria andDIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("d_id not between", value1, value2, "dId");
             return (Criteria) this;
         }
 
-        public Criteria andSIdIsNull() {
-            addCriterion("s_id is null");
+        public Criteria andUIdIsNull() {
+            addCriterion("u_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andSIdIsNotNull() {
-            addCriterion("s_id is not null");
+        public Criteria andUIdIsNotNull() {
+            addCriterion("u_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSIdEqualTo(Integer value) {
-            addCriterion("s_id =", value, "sId");
+        public Criteria andUIdEqualTo(Integer value) {
+            addCriterion("u_id =", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotEqualTo(Integer value) {
-            addCriterion("s_id <>", value, "sId");
+        public Criteria andUIdNotEqualTo(Integer value) {
+            addCriterion("u_id <>", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andSIdGreaterThan(Integer value) {
-            addCriterion("s_id >", value, "sId");
+        public Criteria andUIdGreaterThan(Integer value) {
+            addCriterion("u_id >", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andSIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("s_id >=", value, "sId");
+        public Criteria andUIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("u_id >=", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andSIdLessThan(Integer value) {
-            addCriterion("s_id <", value, "sId");
+        public Criteria andUIdLessThan(Integer value) {
+            addCriterion("u_id <", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andSIdLessThanOrEqualTo(Integer value) {
-            addCriterion("s_id <=", value, "sId");
+        public Criteria andUIdLessThanOrEqualTo(Integer value) {
+            addCriterion("u_id <=", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andSIdIn(List<Integer> values) {
-            addCriterion("s_id in", values, "sId");
+        public Criteria andUIdIn(List<Integer> values) {
+            addCriterion("u_id in", values, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotIn(List<Integer> values) {
-            addCriterion("s_id not in", values, "sId");
+        public Criteria andUIdNotIn(List<Integer> values) {
+            addCriterion("u_id not in", values, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andSIdBetween(Integer value1, Integer value2) {
-            addCriterion("s_id between", value1, value2, "sId");
+        public Criteria andUIdBetween(Integer value1, Integer value2) {
+            addCriterion("u_id between", value1, value2, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("s_id not between", value1, value2, "sId");
+        public Criteria andUIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("u_id not between", value1, value2, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdIsNull() {
+            addCriterion("t_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdIsNotNull() {
+            addCriterion("t_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdEqualTo(Integer value) {
+            addCriterion("t_id =", value, "tId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdNotEqualTo(Integer value) {
+            addCriterion("t_id <>", value, "tId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdGreaterThan(Integer value) {
+            addCriterion("t_id >", value, "tId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("t_id >=", value, "tId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdLessThan(Integer value) {
+            addCriterion("t_id <", value, "tId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdLessThanOrEqualTo(Integer value) {
+            addCriterion("t_id <=", value, "tId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdIn(List<Integer> values) {
+            addCriterion("t_id in", values, "tId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdNotIn(List<Integer> values) {
+            addCriterion("t_id not in", values, "tId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdBetween(Integer value1, Integer value2) {
+            addCriterion("t_id between", value1, value2, "tId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("t_id not between", value1, value2, "tId");
             return (Criteria) this;
         }
 

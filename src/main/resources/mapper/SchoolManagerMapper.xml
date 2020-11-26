@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.kgc.ybis.mapper.ClassMapper" >
-  <resultMap id="BaseResultMap" type="cn.kgc.ybis.pojo.Class" >
-    <id column="c_id" property="cId" jdbcType="INTEGER" />
-    <result column="c_name" property="cName" jdbcType="VARCHAR" />
-    <result column="tm_id" property="tmId" jdbcType="INTEGER" />
-    <result column="s_id" property="sId" jdbcType="INTEGER" />
+<mapper namespace="cn.kgc.ybis.mapper.SchoolManagerMapper" >
+  <resultMap id="BaseResultMap" type="cn.kgc.ybis.pojo.SchoolManager" >
+    <id column="sm_id" property="smId" jdbcType="INTEGER" />
+    <result column="sm_phone" property="smPhone" jdbcType="VARCHAR" />
+    <result column="sm_password" property="smPassword" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="sm_email" property="smEmail" jdbcType="VARCHAR" />
+    <result column="sm_path" property="smPath" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    c_id, c_name, tm_id, s_id, status
+    sm_id, sm_phone, sm_password, status, sm_email, sm_path
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.kgc.ybis.pojo.ClassExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.kgc.ybis.pojo.SchoolManagerExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from class
+    from school_manager
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,85 +87,96 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from class
-    where c_id = #{cId,jdbcType=INTEGER}
+    from school_manager
+    where sm_id = #{smId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from class
-    where c_id = #{cId,jdbcType=INTEGER}
+    delete from school_manager
+    where sm_id = #{smId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.kgc.ybis.pojo.ClassExample" >
-    delete from class
+  <delete id="deleteByExample" parameterType="cn.kgc.ybis.pojo.SchoolManagerExample" >
+    delete from school_manager
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.kgc.ybis.pojo.Class" >
-    insert into class (c_id, c_name, tm_id, 
-      s_id, status)
-    values (#{cId,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, #{tmId,jdbcType=INTEGER}, 
-      #{sId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
+  <insert id="insert" parameterType="cn.kgc.ybis.pojo.SchoolManager" >
+    insert into school_manager (sm_id, sm_phone, sm_password, 
+      status, sm_email, sm_path
+      )
+    values (#{smId,jdbcType=INTEGER}, #{smPhone,jdbcType=VARCHAR}, #{smPassword,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{smEmail,jdbcType=VARCHAR}, #{smPath,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="cn.kgc.ybis.pojo.Class" >
-    insert into class
+  <insert id="insertSelective" parameterType="cn.kgc.ybis.pojo.SchoolManager" >
+    insert into school_manager
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="cId != null" >
-        c_id,
+      <if test="smId != null" >
+        sm_id,
       </if>
-      <if test="cName != null" >
-        c_name,
+      <if test="smPhone != null" >
+        sm_phone,
       </if>
-      <if test="tmId != null" >
-        tm_id,
-      </if>
-      <if test="sId != null" >
-        s_id,
+      <if test="smPassword != null" >
+        sm_password,
       </if>
       <if test="status != null" >
         status,
       </if>
+      <if test="smEmail != null" >
+        sm_email,
+      </if>
+      <if test="smPath != null" >
+        sm_path,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="cId != null" >
-        #{cId,jdbcType=INTEGER},
+      <if test="smId != null" >
+        #{smId,jdbcType=INTEGER},
       </if>
-      <if test="cName != null" >
-        #{cName,jdbcType=VARCHAR},
+      <if test="smPhone != null" >
+        #{smPhone,jdbcType=VARCHAR},
       </if>
-      <if test="tmId != null" >
-        #{tmId,jdbcType=INTEGER},
-      </if>
-      <if test="sId != null" >
-        #{sId,jdbcType=INTEGER},
+      <if test="smPassword != null" >
+        #{smPassword,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
+      <if test="smEmail != null" >
+        #{smEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="smPath != null" >
+        #{smPath,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.kgc.ybis.pojo.ClassExample" resultType="java.lang.Integer" >
-    select count(*) from class
+  <select id="countByExample" parameterType="cn.kgc.ybis.pojo.SchoolManagerExample" resultType="java.lang.Integer" >
+    select count(*) from school_manager
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update class
+    update school_manager
     <set >
-      <if test="record.cId != null" >
-        c_id = #{record.cId,jdbcType=INTEGER},
+      <if test="record.smId != null" >
+        sm_id = #{record.smId,jdbcType=INTEGER},
       </if>
-      <if test="record.cName != null" >
-        c_name = #{record.cName,jdbcType=VARCHAR},
+      <if test="record.smPhone != null" >
+        sm_phone = #{record.smPhone,jdbcType=VARCHAR},
       </if>
-      <if test="record.tmId != null" >
-        tm_id = #{record.tmId,jdbcType=INTEGER},
-      </if>
-      <if test="record.sId != null" >
-        s_id = #{record.sId,jdbcType=INTEGER},
+      <if test="record.smPassword != null" >
+        sm_password = #{record.smPassword,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.smEmail != null" >
+        sm_email = #{record.smEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smPath != null" >
+        sm_path = #{record.smPath,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -172,40 +184,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update class
-    set c_id = #{record.cId,jdbcType=INTEGER},
-      c_name = #{record.cName,jdbcType=VARCHAR},
-      tm_id = #{record.tmId,jdbcType=INTEGER},
-      s_id = #{record.sId,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=INTEGER}
+    update school_manager
+    set sm_id = #{record.smId,jdbcType=INTEGER},
+      sm_phone = #{record.smPhone,jdbcType=VARCHAR},
+      sm_password = #{record.smPassword,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      sm_email = #{record.smEmail,jdbcType=VARCHAR},
+      sm_path = #{record.smPath,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.kgc.ybis.pojo.Class" >
-    update class
+  <update id="updateByPrimaryKeySelective" parameterType="cn.kgc.ybis.pojo.SchoolManager" >
+    update school_manager
     <set >
-      <if test="cName != null" >
-        c_name = #{cName,jdbcType=VARCHAR},
+      <if test="smPhone != null" >
+        sm_phone = #{smPhone,jdbcType=VARCHAR},
       </if>
-      <if test="tmId != null" >
-        tm_id = #{tmId,jdbcType=INTEGER},
-      </if>
-      <if test="sId != null" >
-        s_id = #{sId,jdbcType=INTEGER},
+      <if test="smPassword != null" >
+        sm_password = #{smPassword,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="smEmail != null" >
+        sm_email = #{smEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="smPath != null" >
+        sm_path = #{smPath,jdbcType=VARCHAR},
+      </if>
     </set>
-    where c_id = #{cId,jdbcType=INTEGER}
+    where sm_id = #{smId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.kgc.ybis.pojo.Class" >
-    update class
-    set c_name = #{cName,jdbcType=VARCHAR},
-      tm_id = #{tmId,jdbcType=INTEGER},
-      s_id = #{sId,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER}
-    where c_id = #{cId,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="cn.kgc.ybis.pojo.SchoolManager" >
+    update school_manager
+    set sm_phone = #{smPhone,jdbcType=VARCHAR},
+      sm_password = #{smPassword,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      sm_email = #{smEmail,jdbcType=VARCHAR},
+      sm_path = #{smPath,jdbcType=VARCHAR}
+    where sm_id = #{smId,jdbcType=INTEGER}
   </update>
 </mapper>

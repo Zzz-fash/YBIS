@@ -17,32 +17,6 @@ public class Notice {
 
     private Integer status;
 
-    public Notice() {
-    }
-
-    public Notice(Integer nId, String nName, Date nDate, String nContent, Integer tId, Integer smId, Integer status) {
-        this.nId = nId;
-        this.nName = nName;
-        this.nDate = nDate;
-        this.nContent = nContent;
-        this.tId = tId;
-        this.smId = smId;
-        this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "Notice{" +
-                "nId=" + nId +
-                ", nName='" + nName + '\'' +
-                ", nDate=" + nDate +
-                ", nContent='" + nContent + '\'' +
-                ", tId=" + tId +
-                ", smId=" + smId +
-                ", status=" + status +
-                '}';
-    }
-
     public Integer getnId() {
         return nId;
     }

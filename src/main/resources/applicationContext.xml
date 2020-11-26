@@ -60,5 +60,5 @@
         <aop:pointcut id="serviceMethod" expression="execution(* cn.kgc.ybis.service..*.*(..))"/>
         <aop:advisor advice-ref="txadvice" pointcut-ref="serviceMethod"/>
     </aop:config>
-
+<context:component-scan base-package="cn.kgc.ybis.service"></context:component-scan>
 </beans>
