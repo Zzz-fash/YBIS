@@ -207,7 +207,16 @@
       <artifactId>commons-io</artifactId>
       <version>2.6</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.16</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>easyexcel</artifactId>
+      <version>2.1.6</version>
+    </dependency>
   </dependencies>
 
 
