@@ -15,7 +15,20 @@ public class Notice {
 
     private Integer smId;
 
-    private Integer status;
+    private Integer status=1;
+
+    @Override
+    public String toString() {
+        return "Notice{" +
+                "nId=" + nId +
+                ", nName='" + nName + '\'' +
+                ", nDate=" + nDate +
+                ", nContent='" + nContent + '\'' +
+                ", tId=" + tId +
+                ", smId=" + smId +
+                ", status=" + status +
+                '}';
+    }
 
     public Integer getnId() {
         return nId;
