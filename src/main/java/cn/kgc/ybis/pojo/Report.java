@@ -3,15 +3,15 @@ package cn.kgc.ybis.pojo;
 import java.util.Date;
 
 public class Report {
-    private Long rId;
+    private Integer rId;
 
-    private Long tType;
+    private Integer tType;
 
-    private Long uId;
+    private Integer uId;
 
     private Integer rScore;
 
-    private Long tId;
+    private Integer tId;
 
     private Date tCreationTime;
 
@@ -19,27 +19,27 @@ public class Report {
 
     private Integer tRank;
 
-    public Long getrId() {
+    public Integer getrId() {
         return rId;
     }
 
-    public void setrId(Long rId) {
+    public void setrId(Integer rId) {
         this.rId = rId;
     }
 
-    public Long gettType() {
+    public Integer gettType() {
         return tType;
     }
 
-    public void settType(Long tType) {
+    public void settType(Integer tType) {
         this.tType = tType;
     }
 
-    public Long getuId() {
+    public Integer getuId() {
         return uId;
     }
 
-    public void setuId(Long uId) {
+    public void setuId(Integer uId) {
         this.uId = uId;
     }
 
@@ -51,11 +51,11 @@ public class Report {
         this.rScore = rScore;
     }
 
-    public Long gettId() {
+    public Integer gettId() {
         return tId;
     }
 
-    public void settId(Long tId) {
+    public void settId(Integer tId) {
         this.tId = tId;
     }
 

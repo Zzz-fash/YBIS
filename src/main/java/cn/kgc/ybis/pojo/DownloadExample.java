@@ -114,52 +114,52 @@ public class DownloadExample {
             return (Criteria) this;
         }
 
-        public Criteria andDownIdEqualTo(Long value) {
+        public Criteria andDownIdEqualTo(Integer value) {
             addCriterion("down_id =", value, "downId");
             return (Criteria) this;
         }
 
-        public Criteria andDownIdNotEqualTo(Long value) {
+        public Criteria andDownIdNotEqualTo(Integer value) {
             addCriterion("down_id <>", value, "downId");
             return (Criteria) this;
         }
 
-        public Criteria andDownIdGreaterThan(Long value) {
+        public Criteria andDownIdGreaterThan(Integer value) {
             addCriterion("down_id >", value, "downId");
             return (Criteria) this;
         }
 
-        public Criteria andDownIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andDownIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("down_id >=", value, "downId");
             return (Criteria) this;
         }
 
-        public Criteria andDownIdLessThan(Long value) {
+        public Criteria andDownIdLessThan(Integer value) {
             addCriterion("down_id <", value, "downId");
             return (Criteria) this;
         }
 
-        public Criteria andDownIdLessThanOrEqualTo(Long value) {
+        public Criteria andDownIdLessThanOrEqualTo(Integer value) {
             addCriterion("down_id <=", value, "downId");
             return (Criteria) this;
         }
 
-        public Criteria andDownIdIn(List<Long> values) {
+        public Criteria andDownIdIn(List<Integer> values) {
             addCriterion("down_id in", values, "downId");
             return (Criteria) this;
         }
 
-        public Criteria andDownIdNotIn(List<Long> values) {
+        public Criteria andDownIdNotIn(List<Integer> values) {
             addCriterion("down_id not in", values, "downId");
             return (Criteria) this;
         }
 
-        public Criteria andDownIdBetween(Long value1, Long value2) {
+        public Criteria andDownIdBetween(Integer value1, Integer value2) {
             addCriterion("down_id between", value1, value2, "downId");
             return (Criteria) this;
         }
 
-        public Criteria andDownIdNotBetween(Long value1, Long value2) {
+        public Criteria andDownIdNotBetween(Integer value1, Integer value2) {
             addCriterion("down_id not between", value1, value2, "downId");
             return (Criteria) this;
         }

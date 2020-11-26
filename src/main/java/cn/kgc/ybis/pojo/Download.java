@@ -1,17 +1,17 @@
 package cn.kgc.ybis.pojo;
 
 public class Download {
-    private Long downId;
+    private Integer downId;
 
     private String tTitle;
 
     private String downPath;
 
-    public Long getDownId() {
+    public Integer getDownId() {
         return downId;
     }
 
-    public void setDownId(Long downId) {
+    public void setDownId(Integer downId) {
         this.downId = downId;
     }
 

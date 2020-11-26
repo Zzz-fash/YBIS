@@ -2,7 +2,6 @@ package cn.kgc.ybis.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class ReportExample {
@@ -106,32 +105,6 @@ public class ReportExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
-        }
-
         public Criteria andRIdIsNull() {
             addCriterion("r_id is null");
             return (Criteria) this;
@@ -142,52 +115,52 @@ public class ReportExample {
             return (Criteria) this;
         }
 
-        public Criteria andRIdEqualTo(Long value) {
+        public Criteria andRIdEqualTo(Integer value) {
             addCriterion("r_id =", value, "rId");
             return (Criteria) this;
         }
 
-        public Criteria andRIdNotEqualTo(Long value) {
+        public Criteria andRIdNotEqualTo(Integer value) {
             addCriterion("r_id <>", value, "rId");
             return (Criteria) this;
         }
 
-        public Criteria andRIdGreaterThan(Long value) {
+        public Criteria andRIdGreaterThan(Integer value) {
             addCriterion("r_id >", value, "rId");
             return (Criteria) this;
         }
 
-        public Criteria andRIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andRIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("r_id >=", value, "rId");
             return (Criteria) this;
         }
 
-        public Criteria andRIdLessThan(Long value) {
+        public Criteria andRIdLessThan(Integer value) {
             addCriterion("r_id <", value, "rId");
             return (Criteria) this;
         }
 
-        public Criteria andRIdLessThanOrEqualTo(Long value) {
+        public Criteria andRIdLessThanOrEqualTo(Integer value) {
             addCriterion("r_id <=", value, "rId");
             return (Criteria) this;
         }
 
-        public Criteria andRIdIn(List<Long> values) {
+        public Criteria andRIdIn(List<Integer> values) {
             addCriterion("r_id in", values, "rId");
             return (Criteria) this;
         }
 
-        public Criteria andRIdNotIn(List<Long> values) {
+        public Criteria andRIdNotIn(List<Integer> values) {
             addCriterion("r_id not in", values, "rId");
             return (Criteria) this;
         }
 
-        public Criteria andRIdBetween(Long value1, Long value2) {
+        public Criteria andRIdBetween(Integer value1, Integer value2) {
             addCriterion("r_id between", value1, value2, "rId");
             return (Criteria) this;
         }
 
-        public Criteria andRIdNotBetween(Long value1, Long value2) {
+        public Criteria andRIdNotBetween(Integer value1, Integer value2) {
             addCriterion("r_id not between", value1, value2, "rId");
             return (Criteria) this;
         }
@@ -202,52 +175,52 @@ public class ReportExample {
             return (Criteria) this;
         }
 
-        public Criteria andTTypeEqualTo(Long value) {
+        public Criteria andTTypeEqualTo(Integer value) {
             addCriterion("t_type =", value, "tType");
             return (Criteria) this;
         }
 
-        public Criteria andTTypeNotEqualTo(Long value) {
+        public Criteria andTTypeNotEqualTo(Integer value) {
             addCriterion("t_type <>", value, "tType");
             return (Criteria) this;
         }
 
-        public Criteria andTTypeGreaterThan(Long value) {
+        public Criteria andTTypeGreaterThan(Integer value) {
             addCriterion("t_type >", value, "tType");
             return (Criteria) this;
         }
 
-        public Criteria andTTypeGreaterThanOrEqualTo(Long value) {
+        public Criteria andTTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("t_type >=", value, "tType");
             return (Criteria) this;
         }
 
-        public Criteria andTTypeLessThan(Long value) {
+        public Criteria andTTypeLessThan(Integer value) {
             addCriterion("t_type <", value, "tType");
             return (Criteria) this;
         }
 
-        public Criteria andTTypeLessThanOrEqualTo(Long value) {
+        public Criteria andTTypeLessThanOrEqualTo(Integer value) {
             addCriterion("t_type <=", value, "tType");
             return (Criteria) this;
         }
 
-        public Criteria andTTypeIn(List<Long> values) {
+        public Criteria andTTypeIn(List<Integer> values) {
             addCriterion("t_type in", values, "tType");
             return (Criteria) this;
         }
 
-        public Criteria andTTypeNotIn(List<Long> values) {
+        public Criteria andTTypeNotIn(List<Integer> values) {
             addCriterion("t_type not in", values, "tType");
             return (Criteria) this;
         }
 
-        public Criteria andTTypeBetween(Long value1, Long value2) {
+        public Criteria andTTypeBetween(Integer value1, Integer value2) {
             addCriterion("t_type between", value1, value2, "tType");
             return (Criteria) this;
         }
 
-        public Criteria andTTypeNotBetween(Long value1, Long value2) {
+        public Criteria andTTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("t_type not between", value1, value2, "tType");
             return (Criteria) this;
         }
@@ -262,52 +235,52 @@ public class ReportExample {
             return (Criteria) this;
         }
 
-        public Criteria andUIdEqualTo(Long value) {
+        public Criteria andUIdEqualTo(Integer value) {
             addCriterion("u_id =", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andUIdNotEqualTo(Long value) {
+        public Criteria andUIdNotEqualTo(Integer value) {
             addCriterion("u_id <>", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andUIdGreaterThan(Long value) {
+        public Criteria andUIdGreaterThan(Integer value) {
             addCriterion("u_id >", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andUIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andUIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("u_id >=", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andUIdLessThan(Long value) {
+        public Criteria andUIdLessThan(Integer value) {
             addCriterion("u_id <", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andUIdLessThanOrEqualTo(Long value) {
+        public Criteria andUIdLessThanOrEqualTo(Integer value) {
             addCriterion("u_id <=", value, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andUIdIn(List<Long> values) {
+        public Criteria andUIdIn(List<Integer> values) {
             addCriterion("u_id in", values, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andUIdNotIn(List<Long> values) {
+        public Criteria andUIdNotIn(List<Integer> values) {
             addCriterion("u_id not in", values, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andUIdBetween(Long value1, Long value2) {
+        public Criteria andUIdBetween(Integer value1, Integer value2) {
             addCriterion("u_id between", value1, value2, "uId");
             return (Criteria) this;
         }
 
-        public Criteria andUIdNotBetween(Long value1, Long value2) {
+        public Criteria andUIdNotBetween(Integer value1, Integer value2) {
             addCriterion("u_id not between", value1, value2, "uId");
             return (Criteria) this;
         }
@@ -382,52 +355,52 @@ public class ReportExample {
             return (Criteria) this;
         }
 
-        public Criteria andTIdEqualTo(Long value) {
+        public Criteria andTIdEqualTo(Integer value) {
             addCriterion("t_id =", value, "tId");
             return (Criteria) this;
         }
 
-        public Criteria andTIdNotEqualTo(Long value) {
+        public Criteria andTIdNotEqualTo(Integer value) {
             addCriterion("t_id <>", value, "tId");
             return (Criteria) this;
         }
 
-        public Criteria andTIdGreaterThan(Long value) {
+        public Criteria andTIdGreaterThan(Integer value) {
             addCriterion("t_id >", value, "tId");
             return (Criteria) this;
         }
 
-        public Criteria andTIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andTIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("t_id >=", value, "tId");
             return (Criteria) this;
         }
 
-        public Criteria andTIdLessThan(Long value) {
+        public Criteria andTIdLessThan(Integer value) {
             addCriterion("t_id <", value, "tId");
             return (Criteria) this;
         }
 
-        public Criteria andTIdLessThanOrEqualTo(Long value) {
+        public Criteria andTIdLessThanOrEqualTo(Integer value) {
             addCriterion("t_id <=", value, "tId");
             return (Criteria) this;
         }
 
-        public Criteria andTIdIn(List<Long> values) {
+        public Criteria andTIdIn(List<Integer> values) {
             addCriterion("t_id in", values, "tId");
             return (Criteria) this;
         }
 
-        public Criteria andTIdNotIn(List<Long> values) {
+        public Criteria andTIdNotIn(List<Integer> values) {
             addCriterion("t_id not in", values, "tId");
             return (Criteria) this;
         }
 
-        public Criteria andTIdBetween(Long value1, Long value2) {
+        public Criteria andTIdBetween(Integer value1, Integer value2) {
             addCriterion("t_id between", value1, value2, "tId");
             return (Criteria) this;
         }
 
-        public Criteria andTIdNotBetween(Long value1, Long value2) {
+        public Criteria andTIdNotBetween(Integer value1, Integer value2) {
             addCriterion("t_id not between", value1, value2, "tId");
             return (Criteria) this;
         }
@@ -443,52 +416,52 @@ public class ReportExample {
         }
 
         public Criteria andTCreationTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("t_creation_time =", value, "tCreationTime");
+            addCriterion("t_creation_time =", value, "tCreationTime");
             return (Criteria) this;
         }
 
         public Criteria andTCreationTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("t_creation_time <>", value, "tCreationTime");
+            addCriterion("t_creation_time <>", value, "tCreationTime");
             return (Criteria) this;
         }
 
         public Criteria andTCreationTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("t_creation_time >", value, "tCreationTime");
+            addCriterion("t_creation_time >", value, "tCreationTime");
             return (Criteria) this;
         }
 
         public Criteria andTCreationTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("t_creation_time >=", value, "tCreationTime");
+            addCriterion("t_creation_time >=", value, "tCreationTime");
             return (Criteria) this;
         }
 
         public Criteria andTCreationTimeLessThan(Date value) {
-            addCriterionForJDBCDate("t_creation_time <", value, "tCreationTime");
+            addCriterion("t_creation_time <", value, "tCreationTime");
             return (Criteria) this;
         }
 
         public Criteria andTCreationTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("t_creation_time <=", value, "tCreationTime");
+            addCriterion("t_creation_time <=", value, "tCreationTime");
             return (Criteria) this;
         }
 
         public Criteria andTCreationTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("t_creation_time in", values, "tCreationTime");
+            addCriterion("t_creation_time in", values, "tCreationTime");
             return (Criteria) this;
         }
 
         public Criteria andTCreationTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("t_creation_time not in", values, "tCreationTime");
+            addCriterion("t_creation_time not in", values, "tCreationTime");
             return (Criteria) this;
         }
 
         public Criteria andTCreationTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("t_creation_time between", value1, value2, "tCreationTime");
+            addCriterion("t_creation_time between", value1, value2, "tCreationTime");
             return (Criteria) this;
         }
 
         public Criteria andTCreationTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("t_creation_time not between", value1, value2, "tCreationTime");
+            addCriterion("t_creation_time not between", value1, value2, "tCreationTime");
             return (Criteria) this;
         }
 
