@@ -47,7 +47,7 @@
         </div>
         <ul id="main_nav_boot" >
             <li>
-                <a href="main.jsp" target="kindergarten" id="myMain_lxy"><span class="iconfont icon-shouye"></span> <span>主页</span></a>
+                <a href="main.do" target="kindergarten" id="myMain_lxy"><span class="iconfont icon-shouye"></span> <span>主页</span></a>
             </li>
             <li>
                 <a href="javascript:;" target="kindergarten"><span class="iconfont icon-shujuguanli"></span><span>用户数据管理</span><span class="iconfont icon-right"></span></a>

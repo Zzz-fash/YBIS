@@ -17,6 +17,8 @@ public class Notice {
 
     private Integer status;
 
+    private String nUser;
+
     public Integer getnId() {
         return nId;
     }
@@ -38,7 +40,8 @@ public class Notice {
     }
 
     public void setnDate(Date nDate) {
-        this.nDate = nDate;
+        java.sql.Date date = new java.sql.Date(nDate.getTime());
+        this.nDate = date;
     }
 
     public String getnContent() {
@@ -71,5 +74,13 @@ public class Notice {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getnUser() {
+        return nUser;
+    }
+
+    public void setnUser(String nUser) {
+        this.nUser = nUser == null ? null : nUser.trim();
     }
 }

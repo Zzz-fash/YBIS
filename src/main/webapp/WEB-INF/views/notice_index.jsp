@@ -40,7 +40,7 @@
                             <li>个人邮件</li>
                         </ul>
                     </div>
-                    <input type="submit" class="iconfont" id="notice_announce" value="发布公告"/>
+                    <input type="submit" class="iconfont" id="notice_class_button" value="发布公告"/>
                 </div>
             </div>
         </div>
@@ -50,7 +50,6 @@
                     <div class="img"><img src="../../static/images/notice_images/timg.jpg" alt=""></div>
                     <a href="#">园区公告 <i class="iconfont icon-notice"></i></a>
                     <div id="notice_public_content" class="notice_content">
-
                     </div>
                 </li>
 
@@ -75,7 +74,7 @@
                     </div>
                     <div id="notice_issue_content" class="notice_content">
 
-                   </div>
+                    </div>
                 </li>
             </ul>
         </div>

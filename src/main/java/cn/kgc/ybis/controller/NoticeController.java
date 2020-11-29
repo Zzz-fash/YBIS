@@ -41,10 +41,9 @@ public class NoticeController {
         }
 
     }
+    //首页公告展示
 
-    //-----------------页面跳转-------------
-    @RequestMapping("notice_index.do")
-    public String to_notice_index(){
-        return "notice_index";
-    }
+
+
+
 }
