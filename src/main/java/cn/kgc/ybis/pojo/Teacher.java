@@ -80,4 +80,18 @@ public class Teacher {
     public void settPath(String tPath) {
         this.tPath = tPath == null ? null : tPath.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "tId=" + tId +
+                ", tName='" + tName + '\'' +
+                ", tPassword='" + tPassword + '\'' +
+                ", tPhone='" + tPhone + '\'' +
+                ", tDesc='" + tDesc + '\'' +
+                ", status='" + status + '\'' +
+                ", tEmail='" + tEmail + '\'' +
+                ", tPath='" + tPath + '\'' +
+                '}';
+    }
 }
