@@ -72,14 +72,16 @@ $(document).ready(function(){
      //添加管理员信息
      $(".stuInfo_addBtn").click(function(){
         //先清空上一次输入的内容
-        $(".stuInfor_add_headPortraitImg").attr('src','../images/stuInfor_images/add_stuImg.png');
-        $(".stuInfor_usrReallyName").val("");
-        $(".stuInfor_usrName").val("");
-        $(".stuInfor_usrPsd").val("");
-        $(".stuInfor_usrPsdChecked").val("");
-        $(".stuInfor_usrDuty").val("");
-        $(".stuInfor_accessLevel").val("");
-    });  
+        $(".u_path").attr('src','../images/stuInfor_images/add_stuImg.png');
+        $(".u_name").val("");
+        $(".u_password").val("");
+        $(".u_phone").val("");
+        $(".u_address").val("");
+        $(".c_id").val("");
+        $(".status").val("");
+        $(".u_date").val("");
+        $(".u_path").val("");
+    });
     //上传图片
     $("#chooseImage").on('change',function(){
         var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
@@ -91,28 +93,28 @@ $(document).ready(function(){
             return;  
         }
         //显示图片
-        $('.stuInfor_add_headPortraitImg').attr('src',src);
+        $('.u_path').attr('src',src);
     });
     // 添加管理员信息确认点击事件
     $(".stuInfor_addStudent").click(function(){
         //获取照片路径
-        let stuInfor_addStuImg=$(".stuInfor_add_headPortraitImg").attr('src');
+        let stuInfor_addStuImg=$(".u_path").attr('src');
         //获取输入的名字
-        let stuInfor_addUsrReallyName;
-        if($(".stuInfor_usrReallyName").val()!=""){
-            stuInfor_addUsrReallyName=$(".stuInfor_usrReallyName").val();
+        let u_name;
+        if($(".u_name").val()!=""){
+            u_name=$(".u_name").val();
         }else{
             alert("请输入名字");
             return false;
         }
         //获取输入的账号
-        let stuInfor_addUsrName;
-        if($(".stuInfor_usrName").val()!=""){
-            stuInfor_addUsrName=$(".stuInfor_usrName").val();
+        let u_phone;
+        if($(".u_phone").val()!=""){
+            u_phone=$(".u_phone").val();
             for(let j=0;j<newArr.length;j++){
-                if( newArr[j].username ==stuInfor_addUsrName || newArr[j].teacherId ==stuInfor_addUsrName){
+                if( newArr[j].u_phone ==u_phone || newArr[j].u_phone ==u_phone){
                     alert("你输入的账号已被注册，请重新输入");
-                    $(".stuInfor_usrName").val("");
+                    $(".u_phone").val("");
                     return false;
                 }   
             }
@@ -120,60 +122,6 @@ $(document).ready(function(){
             alert("请输入账号");
             return false;
         }
-        //获取输入的密码
-        let stuInfor_addUsrPsd;
-        if($(".stuInfor_usrPsd").val()!=""){
-            stuInfor_addUsrPsd=$(".stuInfor_usrPsd").val();
-        }else{
-            alert("请输入密码");
-            return false;
-        }
-        //获取输入的确认密码
-        let stuInfor_addUsrPsdChecked;
-        if($(".stuInfor_usrPsdChecked").val()!=""){
-            stuInfor_addUsrPsdChecked=$(".stuInfor_usrPsdChecked").val();
-            if(stuInfor_addUsrPsdChecked!=stuInfor_addUsrPsd){
-                alert("确认密码错误，请重新输入");
-                $(".stuInfor_usrPsdChecked").val("");
-                return false;
-            }
-        }else{
-            alert("请输入确认密码");
-            return false;
-        }
-        //获取输入的职务
-        let stuInfor_addUsrDuty;
-        if($(".stuInfor_usrDuty").val()!=""){
-            stuInfor_addUsrDuty=$(".stuInfor_usrDuty").val();
-        }else{
-            alert("请输入职务");
-            return false;
-        }
-        //获取输入的权限等级
-        let stuInfor_addAccessLevel;
-        if($(".stuInfor_accessLevel").val()!=""){
-            stuInfor_addAccessLevel=$(".stuInfor_accessLevel").val();
-            let patternAccessLevel = /^[1-9]\d*|0$/;
-            if(!patternAccessLevel.test(stuInfor_addAccessLevel)){
-                alert("权限等级必须为数字");
-                return false;
-            }
-        }else{
-            alert("请输入权限等级");
-            return false;
-        }
-        let json={
-            adminName:stuInfor_addUsrReallyName,
-            photo:stuInfor_addStuImg,                   
-            username:stuInfor_addUsrName,
-            password:stuInfor_addUsrPsd,
-            job:stuInfor_addUsrDuty,
-            power:stuInfor_addAccessLevel,
-        };
-        adminOld.push(json);
-        newArr = newArr.filter(function(item) {
-            return item.departmentIsOk === "已激活";
-        })
         //刷新数据
         refreshData();
         alert("添加管理员信息成功！");
