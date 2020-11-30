@@ -28,11 +28,5 @@ public class Test_zt {
             System.out.println(notice.toString());
         }
     }
-//    //插入一条公告
-//    @Test
-//    public void insertnoticeTest02(){
-//        Notice notice = new Notice(null,"幼儿园倒闭了",new Date(),"兄弟们，倒闭了呢",1,1,1);
-//        Boolean aBoolean = noticeService.insertNotice(notice);
-//        System.out.println(aBoolean);
-//    }
+
 }
