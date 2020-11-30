@@ -19,15 +19,32 @@ public class test {
     @Resource
     ChatService chatService;
 
-    @RequestMapping("login.do")
+    @RequestMapping("login2.do")
     public String loginJump(HttpSession session){
         Class c = new  Class();
         c.setcId(1);
         Teacher teacher = new Teacher();
+        teacher.settPhone("1");
+        teacher.settName("张三1");
+        teacher.settPath("1");
         session.setAttribute("teacher",teacher);
         session.setAttribute("phone","1");
         session.setAttribute("class",c);
-        return "forward:contacts.do";
+        return "forward:/contacts.do";
+    }
+
+    @RequestMapping("login.do")
+    public String login2(HttpSession session){
+        Class c = new  Class();
+        c.setcId(1);
+        User user = new User();
+        user.setuPhone("2");
+        user.setuName("郭鹏生2");
+        user.setuPath("1");
+        session.setAttribute("user",user);
+        session.setAttribute("phone","2");
+        session.setAttribute("class",c);
+        return "forward:/contacts.do";
     }
 
 //    @RequestMapping("lll.do")

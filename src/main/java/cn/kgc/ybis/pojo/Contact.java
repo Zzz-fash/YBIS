@@ -1,5 +1,6 @@
 package cn.kgc.ybis.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -13,6 +14,7 @@ public class Contact {
 
     private String content;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date sendingtime;
 
@@ -63,6 +65,17 @@ public class Contact {
     }
 
     public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Contact() {
+    }
+
+    public Contact(String senderId, String receiverId, String content, Date sendingtime, Integer status) {
+        this.senderId = senderId;
+        this.receiverId = receiverId;
+        this.content = content;
+        this.sendingtime = sendingtime;
         this.status = status;
     }
 }
