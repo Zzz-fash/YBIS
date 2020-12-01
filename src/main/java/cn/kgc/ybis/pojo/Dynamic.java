@@ -23,6 +23,22 @@ public class Dynamic {
 
     private Integer status;
 
+    @Override
+    public String toString() {
+        return "Dynamic{" +
+                "dId=" + dId +
+                ", dName='" + dName + '\'' +
+                ", dDate=" + dDate +
+                ", dContent='" + dContent + '\'' +
+                ", dImg='" + dImg + '\'' +
+                ", tId=" + tId +
+                ", uId=" + uId +
+                ", smId=" + smId +
+                ", comId=" + comId +
+                ", status=" + status +
+                '}';
+    }
+
     public Integer getdId() {
         return dId;
     }

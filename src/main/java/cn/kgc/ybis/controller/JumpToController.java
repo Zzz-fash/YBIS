@@ -50,5 +50,8 @@ public class JumpToController {
     public String to_notice_index(){
         return "notice_index";
     }
-
+    @RequestMapping("form_file_upload.do")
+    public String to_form_file_upload(){
+        return "form_file_upload";
+    }
 }
