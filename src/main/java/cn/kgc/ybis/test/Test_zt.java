@@ -1,6 +1,8 @@
 package cn.kgc.ybis.test;
 
+import cn.kgc.ybis.pojo.Dynamic;
 import cn.kgc.ybis.pojo.Notice;
+import cn.kgc.ybis.service.DynamicService;
 import cn.kgc.ybis.service.NoticeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +22,9 @@ import java.util.List;
 public class Test_zt {
     @Autowired
     NoticeService noticeService;
+
+    @Autowired
+    DynamicService dynamicService;
    //查询功能
     @Test
     public void noticeTest01(){
@@ -28,5 +33,16 @@ public class Test_zt {
             System.out.println(notice.toString());
         }
     }
+    @Test
+    public void dynamicTest01(){
+        Dynamic dynamic = new Dynamic();
+        dynamic.setSmId(1);
+        List<Dynamic> dynamics = dynamicService.selectDynamicByExample(dynamic);
+        for (Dynamic dynamic1 : dynamics) {
+            System.out.println(dynamic1.toString());
+        }
+
+    }
+
 
 }
