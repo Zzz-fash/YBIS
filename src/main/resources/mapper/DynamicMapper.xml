@@ -12,6 +12,8 @@
     <result column="sm_id" property="smId" jdbcType="INTEGER" />
     <result column="com_id" property="comId" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="d_uname" property="dUname" jdbcType="VARCHAR" />
+    <association property="aClass" column="t_id" select="cn.kgc.ybis.mapper.ClassMapper.selectByPrimaryKey"></association>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    d_id, d_name, d_date, d_content, d_img, t_id, u_id, sm_id, com_id, status
+    d_id, d_name, d_date, d_content, d_img, t_id, u_id, sm_id, com_id, status, d_uname
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.kgc.ybis.pojo.DynamicExample" >
     select
@@ -107,12 +109,12 @@
   <insert id="insert" parameterType="cn.kgc.ybis.pojo.Dynamic" >
     insert into dynamic (d_id, d_name, d_date, 
       d_content, d_img, t_id, 
-      u_id, sm_id, com_id, status
-      )
+      u_id, sm_id, com_id, status, 
+      d_uname)
     values (#{dId,jdbcType=INTEGER}, #{dName,jdbcType=VARCHAR}, #{dDate,jdbcType=TIMESTAMP}, 
       #{dContent,jdbcType=VARCHAR}, #{dImg,jdbcType=VARCHAR}, #{tId,jdbcType=INTEGER}, 
-      #{uId,jdbcType=INTEGER}, #{smId,jdbcType=INTEGER}, #{comId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
-      )
+      #{uId,jdbcType=INTEGER}, #{smId,jdbcType=INTEGER}, #{comId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{dUname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.kgc.ybis.pojo.Dynamic" >
     insert into dynamic
@@ -147,6 +149,9 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="dUname != null" >
+        d_uname,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="dId != null" >
@@ -178,6 +183,9 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="dUname != null" >
+        #{dUname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -220,6 +228,9 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.dUname != null" >
+        d_uname = #{record.dUname,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -236,7 +247,8 @@
       u_id = #{record.uId,jdbcType=INTEGER},
       sm_id = #{record.smId,jdbcType=INTEGER},
       com_id = #{record.comId,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=INTEGER}
+      status = #{record.status,jdbcType=INTEGER},
+      d_uname = #{record.dUname,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -271,6 +283,9 @@
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="dUname != null" >
+        d_uname = #{dUname,jdbcType=VARCHAR},
+      </if>
     </set>
     where d_id = #{dId,jdbcType=INTEGER}
   </update>
@@ -284,7 +299,8 @@
       u_id = #{uId,jdbcType=INTEGER},
       sm_id = #{smId,jdbcType=INTEGER},
       com_id = #{comId,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      d_uname = #{dUname,jdbcType=VARCHAR}
     where d_id = #{dId,jdbcType=INTEGER}
   </update>
 </mapper>

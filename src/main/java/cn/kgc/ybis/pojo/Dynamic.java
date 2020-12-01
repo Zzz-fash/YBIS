@@ -23,20 +23,16 @@ public class Dynamic {
 
     private Integer status;
 
-    @Override
-    public String toString() {
-        return "Dynamic{" +
-                "dId=" + dId +
-                ", dName='" + dName + '\'' +
-                ", dDate=" + dDate +
-                ", dContent='" + dContent + '\'' +
-                ", dImg='" + dImg + '\'' +
-                ", tId=" + tId +
-                ", uId=" + uId +
-                ", smId=" + smId +
-                ", comId=" + comId +
-                ", status=" + status +
-                '}';
+    private String dUname;
+
+    private Class aClass;
+
+    public Class getaClass() {
+        return aClass;
+    }
+
+    public void setaClass(Class aClass) {
+        this.aClass = aClass;
     }
 
     public Integer getdId() {
@@ -56,11 +52,13 @@ public class Dynamic {
     }
 
     public Date getdDate() {
+
         return dDate;
     }
 
     public void setdDate(Date dDate) {
-        this.dDate = dDate;
+        java.sql.Date date = new java.sql.Date(dDate.getTime());
+        this.dDate = date;
     }
 
     public String getdContent() {
@@ -117,5 +115,13 @@ public class Dynamic {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getdUname() {
+        return dUname;
+    }
+
+    public void setdUname(String dUname) {
+        this.dUname = dUname == null ? null : dUname.trim();
     }
 }

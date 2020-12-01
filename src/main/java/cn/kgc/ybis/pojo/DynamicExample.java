@@ -734,6 +734,76 @@ public class DynamicExample {
             addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
+
+        public Criteria andDUnameIsNull() {
+            addCriterion("d_uname is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameIsNotNull() {
+            addCriterion("d_uname is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameEqualTo(String value) {
+            addCriterion("d_uname =", value, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameNotEqualTo(String value) {
+            addCriterion("d_uname <>", value, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameGreaterThan(String value) {
+            addCriterion("d_uname >", value, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameGreaterThanOrEqualTo(String value) {
+            addCriterion("d_uname >=", value, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameLessThan(String value) {
+            addCriterion("d_uname <", value, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameLessThanOrEqualTo(String value) {
+            addCriterion("d_uname <=", value, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameLike(String value) {
+            addCriterion("d_uname like", value, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameNotLike(String value) {
+            addCriterion("d_uname not like", value, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameIn(List<String> values) {
+            addCriterion("d_uname in", values, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameNotIn(List<String> values) {
+            addCriterion("d_uname not in", values, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameBetween(String value1, String value2) {
+            addCriterion("d_uname between", value1, value2, "dUname");
+            return (Criteria) this;
+        }
+
+        public Criteria andDUnameNotBetween(String value1, String value2) {
+            addCriterion("d_uname not between", value1, value2, "dUname");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

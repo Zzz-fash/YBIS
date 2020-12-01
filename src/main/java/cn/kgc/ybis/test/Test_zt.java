@@ -39,10 +39,7 @@ public class Test_zt {
         dynamic.setSmId(1);
         List<Dynamic> dynamics = dynamicService.selectDynamicByExample(dynamic);
         for (Dynamic dynamic1 : dynamics) {
-            System.out.println(dynamic1.toString());
+            System.out.println(dynamic1.getaClass().getcName());
         }
-
     }
-
-
 }

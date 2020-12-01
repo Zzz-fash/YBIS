@@ -1,0 +1,43 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photozhan</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/polaroid-gallery.css"/>
+    <!--[if IE]>
+    <script src="../../static/css/polaroid-gallery.css"></script>
+    <![endif]-->
+</head>
+<body class="fullscreen">
+<div class="cjl_tiaozuan">
+    <p>进入照片管理</p>
+</div>
+
+<div id="gallery" class="fullscreen">
+
+</div>
+<div id="nav" class="navbar">
+    <span id="preview" class="button">&lt; 前一张</span>
+    <span id="next" class="button">下一张 &gt;</span>
+</div>
+
+
+<script type="text/javascript" src="../../static/js/polaroid-gallery.js"></script>
+<script src="../../static/lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script>
+    window.onload = function () {
+        new polaroidGallery("../css/data.json");
+    }
+
+    $(document).ready(function () {
+        $(".cjl_tiaozuan").click(function () {
+            $(location).attr("href","Photo%20wall%20management.html")
+        })
+    })
+    // $(".cjl_tiaozuan").on("click").href("Photo%20wall%20management.html")
+</script>
+</body>
+</html>

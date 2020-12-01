@@ -32,15 +32,13 @@
                 </ul>
             </div>
         </div>
-            <ul class="main_polaroids col-lg-12 col-md-12">
 
+            <ul class="main_polaroids col-lg-12 col-md-12">
                 <li><a href="1" title="甜甜生日"><img src="../../static/images/main_images/01.jpg" alt="风景1" /></a></li>
                 <li><a href="2" title="手工课"><img src="../../static/images/main_images/06.jpg" alt="风景2" /></a></li>
                 <li><a href="3" title="课外活动"><img src="../../static/images/main_images/21.jpg" alt="风景3" /></a></li>
                 <li><a href="4" title="课外活动"><img src="../../static/images/main_images/19.jpg" alt="风景4" /></a></li>
                 <li><a href="5" title="涂涂生日"><img src="../../static/images/main_images/01.jpg" alt="风景5" /></a></li>
-
-
             </ul>
 
     </header>
@@ -180,6 +178,7 @@
                 );
             }
         })
+
         $("body").on("click",function () {
             console.log(123)
             console.log( $(".main_mail_content")[0])

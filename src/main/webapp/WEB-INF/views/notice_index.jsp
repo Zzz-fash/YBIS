@@ -20,17 +20,19 @@
 <%-----------------------------------------form 表单区域------------------------------------------%>
 <form action="notice_send.do" method="post">
     <div class="container-fluid">
-            <P style="color: #00CE68; margin-left: 500px;size: B4 " >${sendMsg}</P>
+        <P style="color: #00CE68; margin-left: 500px;size: B4 ">${sendMsg}</P>
         <div class="row">
             <div class="notice_input">
-                <textarea name="n_name" id="notice_text" style="width: 500px;height: 40px;font-family: 黑体" placeholder="公告主题"></textarea>
+                <textarea name="n_name" id="notice_text" style="width: 500px;height: 40px;font-family: 黑体"
+                          placeholder="公告主题"></textarea>
                 <textarea name="n_content" id="notice_text" placeholder="请输入公告内容"></textarea>
                 <div id="notice_type">
                     <i class="iconfont icon-biaoti"></i>
                     <i class="iconfont icon-bold"></i>
-                    <i class="iconfont icon-chakanzhaopian"><input type="file" id="notice_file" value=""/></i>
+                    <i class="iconfont icon-chakanzhaopian">
+                        <input type="file" id="notice_file" name="touxiang" value=""/></i>
                     <span id="notice_file_img"></span>
-                    <div id="notice_selectBox" >
+                    <div id="notice_selectBox">
                         <span>公告类型：</span>
                         <span id="notice_mySelect">请选择公告类型</span>
                         <i class="iconfont icon-down"></i>
@@ -82,33 +84,33 @@
 </form>
 <%-----------------------------------------/form 表单区域------------------------------------------%>
 
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content notice_email">
-                <p>您的邮件已发送成功！</p>
-                <div class="row">
-                    <div class="col-xs-5">收件人：</div>
-                    <div class="col-xs-7"><span></span></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-5">收件地址：</div>
-                    <div class="col-xs-7"><span></span></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-5">发件人：</div>
-                    <div class="col-xs-7"><span></span></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-5">发送时间：</div>
-                    <div class="col-xs-7"><span></span></div>
-                </div>
-
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content notice_email">
+            <p>您的邮件已发送成功！</p>
+            <div class="row">
+                <div class="col-xs-5">收件人：</div>
+                <div class="col-xs-7"><span></span></div>
             </div>
+            <div class="row">
+                <div class="col-xs-5">收件地址：</div>
+                <div class="col-xs-7"><span></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5">发件人：</div>
+                <div class="col-xs-7"><span></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5">发送时间：</div>
+                <div class="col-xs-7"><span></span></div>
+            </div>
+
         </div>
     </div>
-    <script src="../../static/lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
-    <script src="../../static/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
-    <script src="../../static/js/DATE_index.js"></script>
-    <script src="../../static/js/notice.js"></script>
+</div>
+<script src="../../static/lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../../static/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script src="../../static/js/DATE_index.js"></script>
+<script src="../../static/js/notice.js"></script>
 </body>
 </html>
