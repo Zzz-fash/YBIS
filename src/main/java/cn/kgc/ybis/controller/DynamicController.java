@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,7 +28,7 @@ public class DynamicController {
 
         return "";
     }
-
+    //添加一条动态
     @RequestMapping("DynamicInsert.do")
     public String insertDynamicByExample(HttpServletRequest request, @RequestParam("dImg") MultipartFile dImg, HttpServletResponse response, HttpSession session){
         //模拟数据
@@ -35,13 +36,12 @@ public class DynamicController {
         //需要从session中获取判断
         dynamic.settId(1);
         dynamic.setuId(1);
-
         dynamic.setComId(1);
+        dynamic.setSmId(1);
         dynamic.setdContent(request.getParameter("dContent"));
         dynamic.setdDate(new Date());
         dynamic.setdName(request.getParameter("dName"));
         dynamic.setStatus(1);
-
         //上传文件
         String realPath = session.getServletContext().getRealPath("images/upload_dynamic");
         String oldName = dImg.getOriginalFilename();
@@ -65,13 +65,23 @@ public class DynamicController {
         return "Dynamic";
     }
     //跳转到动态列表
-    @RequestMapping("blog-grid.do")
+    @RequestMapping("blog-grid-all.do")
     public String blog(HttpServletRequest request){
         Dynamic dynamic = new Dynamic();
         dynamic.setSmId(1);
         List<Dynamic> dynamics = dynamicService.selectDynamicByExample(dynamic);
         System.out.println(dynamics.size()+"---------------------------------------------------------------");
         request.setAttribute("dynamics",dynamics);
+        return "blog-grid-all";
+    }
+    //删除动态
+    @RequestMapping("Dynamic-delete.do")
+    public String dynamicDelete(int dId, HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(dId);
+        boolean b = dynamicService.updateDynamicByExampleForDelete(dId);
+        if (b){
+            request.getRequestDispatcher("blog-grid-all.do").forward(request,response);
+        }
         return "blog-grid-all";
     }
 }

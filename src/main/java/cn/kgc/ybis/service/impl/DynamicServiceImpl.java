@@ -26,4 +26,18 @@ public class DynamicServiceImpl implements DynamicService {
         int i = dynamicMapper.insertSelective(dynamic);
         return i>0?true:false;
     }
+
+    @Override
+    public boolean deleteDynamicByExample(Integer dId) {
+        int i = dynamicMapper.deleteByPrimaryKey(dId);
+        return i>0?true:false;
+    }
+    //修改状态，0为删除，1为存在
+    @Override
+    public boolean updateDynamicByExampleForDelete(Integer dId) {
+        Dynamic dynamic = dynamicMapper.selectByPrimaryKey(dId);
+        dynamic.setStatus(0);
+        int i = dynamicMapper.updateByPrimaryKey(dynamic);
+        return i>0?true:false;
+    }
 }

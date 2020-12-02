@@ -27,6 +27,16 @@ public class Dynamic {
 
     private Class aClass;
 
+    private Teacher teacher;
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
     public Class getaClass() {
         return aClass;
     }

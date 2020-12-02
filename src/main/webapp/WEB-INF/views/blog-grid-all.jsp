@@ -64,317 +64,40 @@
     <div class="container">
         <div class="row">
             <%--动态列表--%>
-            <c:forEach items="${dynamics}" var="dynamic">
+            <c:forEach items="${dynamics}" var="dynamics">
                 <div class="col-lg-4 col-md-6">
                     <div class="blog-post-card blog-post--block img-hover-4">
                         <div class="blog-post-image">
                             <a href="#">
-                                <img src="../../images/upload_dynamic/a123.jpg" alt="">
+                                <img style="width: 350px;height: 270px" src="../../images/upload_dynamic/${dynamics.dImg}" alt="">
                             </a>
                         </div>
                         <div class="blog-post-body">
                             <div class="post-meta">
                                 <%--发布者--%>
                                 <div class="post-author">
-                                    <a href="#">${dynamic.dUname}(${dynamic.aClass.cName})</a>
+                                    <a href="#">${dynamics.teacher.tName}|(${dynamics.aClass.cName})</a>
                                 </div>
-
                                     <%--时间--%>
                                 <div class="post-date">
-                                   ${dynamic.dDate}
+                                   ${dynamics.dDate} ||&nbsp<a href="javascript:void(0);" onclick="delet(${dynamics.dId})">删除</a>
                                 </div>
                             </div>
                                 <%--主题--%>
                             <a href="#">
-                                <h3 class="post-title">${dynamic.dName}</h3>
+                                <h3 class="post-title">${dynamics.dName}</h3>
                             </a>
                                 <%--内容--%>
                             <div class="post-summery">
                                 <p>
-                                        ${dynamic.dContent}
+                                        ${dynamics.dContent}
                                 </p>
                             </div>
-
                         </div>
                     </div>
                 </div>
+
             </c:forEach>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-post-card blog-post--block img-hover-4">
-                    <div class="blog-post-image">
-                        <a href="#">
-                            <img src="../../assets/images/blog-post-01.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-post-body">
-                        <div class="post-meta">
-                            <div class="post-author">
-                                <a href="#">By Admin</a>
-                            </div>
-                            <%--时间--%>
-                            <div class="post-date">
-                                18 Nov, 2020
-                            </div>
-                        </div>
-                        <%--主题--%>
-                        <a href="#">
-                            <h3 class="post-title">Top 25 Pieces From The Spring Online stores sale</h3>
-                        </a>
-                        <%--内容--%>
-                        <div class="post-summery">
-                            <p>Lorem ipsum dolor sit amet, sale nemore equidem duo ad, et qui rebum aeque. In quo
-                                possit omnium delectus, vis latine partiendo dignissim ne.
-                            </p>
-                        </div>
-                        <div class="post-btn">
-                            <a href="#" class="button button--link">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-post-card blog-post--block img-hover-4">
-                    <div class="blog-post-image">
-                        <a href="#">
-                            <img src="../../assets/images/blog-post-02.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-post-body">
-                        <div class="post-meta">
-                            <div class="post-author">
-                                <a href="#">By Admin</a>
-                            </div>
-                            <div class="post-date">
-                                18 Nov, 2020
-                            </div>
-                        </div>
-
-                        <a href="#">
-                            <h3 class="post-title">The Most Flattering blouses under $100</h3>
-                        </a>
-                        <div class="post-summery">
-                            <p>Lorem ipsum dolor sit amet, sale nemore equidem duo ad, et qui rebum aeque. In quo
-                                possit omnium delectus, vis latine partiendo dignissim ne.
-                            </p>
-                        </div>
-                        <div class="post-btn">
-                            <a href="#" class="button button--link">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-post-card blog-post--block img-hover-4">
-                    <div class="blog-post-image">
-                        <a href="#">
-                            <img src="../../assets/images/blog-post-03.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-post-body">
-                        <div class="post-meta">
-                            <div class="post-author">
-                                <a href="#">By Admin</a>
-                            </div>
-                            <div class="post-date">
-                                18 Nov, 2020
-                            </div>
-                        </div>
-                        <a href="#">
-                            <h3 class="post-title">5 Little Luxuries That Make a Big Difference</h3>
-                        </a>
-                        <div class="post-summery">
-                            <p>Lorem ipsum dolor sit amet, sale nemore equidem duo ad, et qui rebum aeque. In quo
-                                possit omnium delectus, vis latine partiendo dignissim ne.
-                            </p>
-                        </div>
-                        <div class="post-btn">
-                            <a href="#" class="button button--link">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-post-card blog-post--block img-hover-4">
-                    <div class="blog-post-image">
-                        <a href="#">
-                            <img src="../../assets/images/blog-post-04.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-post-body">
-                        <div class="post-meta">
-                            <div class="post-author">
-                                <a href="#">By Admin</a>
-                            </div>
-                            <div class="post-date">
-                                18 Nov, 2020
-                            </div>
-                        </div>
-                        <a href="#">
-                            <h3 class="post-title">What is the make-up trends in 2020?</h3>
-                        </a>
-                        <div class="post-summery">
-                            <p>Lorem ipsum dolor sit amet, sale nemore equidem duo ad, et qui rebum aeque. In quo
-                                possit omnium delectus, vis latine partiendo dignissim ne.
-                            </p>
-                        </div>
-                        <div class="post-btn">
-                            <a href="#" class="button button--link">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-post-card blog-post--block img-hover-4">
-                    <div class="blog-post-image">
-                        <a href="#">
-                            <img src="../../assets/images/blog-post-05.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-post-body">
-                        <div class="post-meta">
-                            <div class="post-author">
-                                <a href="#">By Admin</a>
-                            </div>
-                            <div class="post-date">
-                                18 Nov, 2020
-                            </div>
-                        </div>
-
-                        <a href="#">
-                            <h3 class="post-title">Best tips for photography</h3>
-                        </a>
-                        <div class="post-summery">
-                            <p>Lorem ipsum dolor sit amet, sale nemore equidem duo ad, et qui rebum aeque. In quo
-                                possit omnium delectus, vis latine partiendo dignissim ne.
-                            </p>
-                        </div>
-                        <div class="post-btn">
-                            <a href="#" class="button button--link">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-post-card blog-post--block img-hover-4">
-                    <div class="blog-post-image">
-                        <a href="#">
-                            <img src="../../assets/images/blog-post-06.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-post-body">
-                        <div class="post-meta">
-                            <div class="post-author">
-                                <a href="#">By Admin</a>
-                            </div>
-                            <div class="post-date">
-                                18 Nov, 2020
-                            </div>
-                        </div>
-                        <a href="#">
-                            <h3 class="post-title">5 Little accessories That are trendy</h3>
-                        </a>
-                        <div class="post-summery">
-                            <p>Lorem ipsum dolor sit amet, sale nemore equidem duo ad, et qui rebum aeque. In quo
-                                possit omnium delectus, vis latine partiendo dignissim ne.
-                            </p>
-                        </div>
-                        <div class="post-btn">
-                            <a href="#" class="button button--link">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-post-card blog-post--block img-hover-4">
-                    <div class="blog-post-image">
-                        <a href="#">
-                            <img src="../../assets/images/blog-post-07.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-post-body">
-                        <div class="post-meta">
-                            <div class="post-author">
-                                <a href="#">By Admin</a>
-                            </div>
-                            <div class="post-date">
-                                18 Nov, 2020
-                            </div>
-                        </div>
-                        <a href="#">
-                            <h3 class="post-title">What are the latest trends in 2020?</h3>
-                        </a>
-                        <div class="post-summery">
-                            <p>Lorem ipsum dolor sit amet, sale nemore equidem duo ad, et qui rebum aeque. In quo
-                                possit omnium delectus, vis latine partiendo dignissim ne.
-                            </p>
-                        </div>
-                        <div class="post-btn">
-                            <a href="#" class="button button--link">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-post-card blog-post--block img-hover-4">
-                    <div class="blog-post-image">
-                        <a href="#">
-                            <img src="../../assets/images/blog-post-08.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-post-body">
-                        <div class="post-meta">
-                            <div class="post-author">
-                                <a href="#">By Admin</a>
-                            </div>
-                            <div class="post-date">
-                                18 Nov, 2020
-                            </div>
-                        </div>
-
-                        <a href="#">
-                            <h3 class="post-title">Best tips to choose daily styles</h3>
-                        </a>
-                        <div class="post-summery">
-                            <p>Lorem ipsum dolor sit amet, sale nemore equidem duo ad, et qui rebum aeque. In quo
-                                possit omnium delectus, vis latine partiendo dignissim ne.
-                            </p>
-                        </div>
-                        <div class="post-btn">
-                            <a href="#" class="button button--link">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-post-card blog-post--block img-hover-4">
-                    <div class="blog-post-image">
-                        <a href="#">
-                            <img src="../../assets/images/blog-post-09.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-post-body">
-                        <div class="post-meta">
-                            <div class="post-author">
-                                <a href="#">By Admin</a>
-                            </div>
-                            <div class="post-date">
-                                18 Nov, 2020
-                            </div>
-                        </div>
-                        <a href="#">
-                            <h3 class="post-title">5 Little accessories That are trendy</h3>
-                        </a>
-                        <div class="post-summery">
-                            <p>Lorem ipsum dolor sit amet, sale nemore equidem duo ad, et qui rebum aeque. In quo
-                                possit omnium delectus, vis latine partiendo dignissim ne.
-                            </p>
-                        </div>
-                        <div class="post-btn">
-                            <a href="#" class="button button--link">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row">
             <div class="col-12">
@@ -407,4 +130,13 @@
 <!-- theme js -->
 <script src="../../assets/js/custom.js"></script>
 </body>
+<script type="text/javascript">
+   function delet(id) {
+       if (confirm("确认要删除吗？")){
+            window.location.href="/Dynamic-delete.do?dId="+id;
+       }else{
+           alert("b");
+       }
+   }
+</script>
 </html>

@@ -14,4 +14,8 @@ public interface DynamicService {
     public List<Dynamic> selectDynamicByExample(Dynamic dynamic);
     //插入一条动态
     public boolean insertDynamicByExample(Dynamic dynamic);
+    //真实删除一条动态
+    public boolean deleteDynamicByExample(Integer dId);
+    //修改一条状态
+    public boolean updateDynamicByExampleForDelete(Integer dId);
 }

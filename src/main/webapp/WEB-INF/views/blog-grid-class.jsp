@@ -85,7 +85,6 @@
                                 <div class="post-author">
                                     <a href="#">${dynamic.dUname}(${dynamic.aClass.cName})</a>
                                 </div>
-
                                     <%--时间--%>
                                 <div class="post-date">
                                         ${dynamic.dDate}
@@ -101,7 +100,6 @@
                                         ${dynamic.dContent}
                                 </p>
                             </div>
-
                         </div>
                     </div>
                 </div>
