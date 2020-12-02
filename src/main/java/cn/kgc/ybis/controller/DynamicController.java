@@ -72,6 +72,6 @@ public class DynamicController {
         List<Dynamic> dynamics = dynamicService.selectDynamicByExample(dynamic);
         System.out.println(dynamics.size()+"---------------------------------------------------------------");
         request.setAttribute("dynamics",dynamics);
-        return "blog-grid";
+        return "blog-grid-all";
     }
 }
