@@ -15,6 +15,8 @@
         <setting name="lazyLoadingEnabled" value="true" />
         <!-- 将积极加载改为消极加载  按需加载 -->
         <setting name="aggressiveLazyLoading" value="false"/>
+        <!--设置启用数据库字段下划线映射到java对象的驼峰式命名属性，默认为false-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
 </configuration>
