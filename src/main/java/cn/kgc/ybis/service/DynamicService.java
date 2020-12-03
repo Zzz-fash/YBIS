@@ -10,8 +10,10 @@ import java.util.List;
  * @time 2020年11月30日19:22:28
  */
 public interface DynamicService {
-    //查询动态
+    //查询全部动态
     public List<Dynamic> selectDynamicByExample(Dynamic dynamic);
+    //查询全班的动态
+    public List<Dynamic> selectDynamicByExampleByClass(Dynamic dynamic);
     //插入一条动态
     public boolean insertDynamicByExample(Dynamic dynamic);
     //真实删除一条动态

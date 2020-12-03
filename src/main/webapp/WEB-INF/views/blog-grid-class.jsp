@@ -49,7 +49,7 @@
      style="background-image: url('../../assets/images/page-header-01.jpg')">
     <div class="container">
         <div class="page-header-img__wrapper">
-            <h2 class="page-title">Blog</h2>
+            <h2 class="page-title">动态</h2>
         </div>
     </div>
 </div>
@@ -59,7 +59,7 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">返回上一页</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Blog</li>
             </ol>
         </nav>
@@ -72,6 +72,7 @@
         <div class="row">
             <%--动态列表--%>
             <c:forEach items="${dynamics}" var="dynamic">
+                <c:if test="${empty dynamic.smId}">
                 <div class="col-lg-4 col-md-6">
                     <div class="blog-post-card blog-post--block img-hover-4">
                         <div class="blog-post-image">
@@ -103,6 +104,7 @@
                         </div>
                     </div>
                 </div>
+                </c:if>
             </c:forEach>
         </div>
         <div class="row">

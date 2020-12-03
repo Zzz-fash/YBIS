@@ -12,11 +12,18 @@ import java.util.List;
 public class DynamicServiceImpl implements DynamicService {
     @Autowired
     DynamicMapper dynamicMapper;
-
+    //查询全校的动态
     @Override
     public List<Dynamic> selectDynamicByExample(Dynamic dynamic) {
         DynamicExample dynamicExample = new DynamicExample();
         dynamicExample.createCriteria().andSmIdEqualTo(dynamic.getSmId());
+        List<Dynamic> dynamics = dynamicMapper.selectByExample(dynamicExample);
+        return dynamics;
+    }
+    //查询全班的动态
+    public List<Dynamic> selectDynamicByExampleByClass(Dynamic dynamic){
+        DynamicExample dynamicExample = new DynamicExample();
+        dynamicExample.createCriteria().andTIdEqualTo(dynamic.gettId());
         List<Dynamic> dynamics = dynamicMapper.selectByExample(dynamicExample);
         return dynamics;
     }

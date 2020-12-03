@@ -64,7 +64,7 @@ public class DynamicController {
     public String toDynamic(){
         return "Dynamic";
     }
-    //跳转到动态列表
+    //跳转到全部动态列表
     @RequestMapping("blog-grid-all.do")
     public String blog(HttpServletRequest request){
         Dynamic dynamic = new Dynamic();
@@ -74,6 +74,19 @@ public class DynamicController {
         request.setAttribute("dynamics",dynamics);
         return "blog-grid-all";
     }
+    //跳转班级动态列表
+    @RequestMapping("blog-grid-class.do")
+    public String blog_class(HttpServletRequest request){
+       //模拟数据
+        Dynamic dynamic = new Dynamic();
+        dynamic.settId(1);
+
+        List<Dynamic> dynamics = dynamicService.selectDynamicByExampleByClass(dynamic);
+        System.out.println(dynamics.size()+"---------------------------------------------------------------");
+        request.setAttribute("dynamics",dynamics);
+        return "blog-grid-class";
+    }
+
     //删除动态
     @RequestMapping("Dynamic-delete.do")
     public String dynamicDelete(int dId, HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
@@ -84,4 +97,6 @@ public class DynamicController {
         }
         return "blog-grid-all";
     }
+
+
 }
