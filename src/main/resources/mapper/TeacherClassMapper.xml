@@ -5,6 +5,7 @@
     <id column="tc_id" property="tcId" jdbcType="INTEGER" />
     <result column="t_id" property="tId" jdbcType="INTEGER" />
     <result column="c_id" property="cId" jdbcType="INTEGER" />
+    <association property="teacher" select="cn.kgc.ybis.mapper.TeacherMapper.selectByPrimaryKey" column="t_id"></association>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
