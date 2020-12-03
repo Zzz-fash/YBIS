@@ -108,7 +108,7 @@
       #{status,jdbcType=INTEGER}, #{smEmail,jdbcType=VARCHAR}, #{smPath,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.kgc.ybis.pojo.School_manager" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="smId" parameterType="cn.kgc.ybis.pojo.School_manager" >
     insert into school_manager
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="smId != null" >

@@ -19,6 +19,7 @@
 
     <!--静态资源-->
 <mvc:resources mapping="/static/**" location="/static/"></mvc:resources>
+    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"></mvc:resources>
 
     <!-- 设置上传文件最大值   1M=1*1024*1024(B)=1048576 bytes -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

@@ -5,7 +5,7 @@ public class School {
 
     private String sName;
 
-    private String sAddress;
+    private String sAddress; //学校地址
 
     private Integer smId;
 

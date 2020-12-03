@@ -105,7 +105,7 @@
     values (#{sId,jdbcType=INTEGER}, #{sName,jdbcType=VARCHAR}, #{sAddress,jdbcType=VARCHAR}, 
       #{smId,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.kgc.ybis.pojo.School" >
+  <insert id="insertSelective"  parameterType="cn.kgc.ybis.pojo.School" >
     insert into school
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="sId != null" >
