@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.ybis.mapper.DownloadMapper" >
+  <resultMap id="BaseResultMap" type="cn.kgc.ybis.pojo.Download" >
+    <id column="down_id" property="downId" jdbcType="BIGINT" />
+    <result column="t_title" property="tTitle" jdbcType="VARCHAR" />
+    <result column="down_path" property="downPath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    down_id, t_title, down_path
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.kgc.ybis.pojo.DownloadExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from download
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from download
+    where down_id = #{downId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from download
+    where down_id = #{downId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.kgc.ybis.pojo.DownloadExample" >
+    delete from download
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.kgc.ybis.pojo.Download" >
+    insert into download (down_id, t_title, down_path
+      )
+    values (#{downId,jdbcType=BIGINT}, #{tTitle,jdbcType=VARCHAR}, #{downPath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.kgc.ybis.pojo.Download" >
+    insert into download
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="downId != null" >
+        down_id,
+      </if>
+      <if test="tTitle != null" >
+        t_title,
+      </if>
+      <if test="downPath != null" >
+        down_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="downId != null" >
+        #{downId,jdbcType=BIGINT},
+      </if>
+      <if test="tTitle != null" >
+        #{tTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="downPath != null" >
+        #{downPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.kgc.ybis.pojo.DownloadExample" resultType="java.lang.Integer" >
+    select count(*) from download
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update download
+    <set >
+      <if test="record.downId != null" >
+        down_id = #{record.downId,jdbcType=BIGINT},
+      </if>
+      <if test="record.tTitle != null" >
+        t_title = #{record.tTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.downPath != null" >
+        down_path = #{record.downPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update download
+    set down_id = #{record.downId,jdbcType=BIGINT},
+      t_title = #{record.tTitle,jdbcType=VARCHAR},
+      down_path = #{record.downPath,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.kgc.ybis.pojo.Download" >
+    update download
+    <set >
+      <if test="tTitle != null" >
+        t_title = #{tTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="downPath != null" >
+        down_path = #{downPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where down_id = #{downId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.kgc.ybis.pojo.Download" >
+    update download
+    set t_title = #{tTitle,jdbcType=VARCHAR},
+      down_path = #{downPath,jdbcType=VARCHAR}
+    where down_id = #{downId,jdbcType=BIGINT}
+  </update>
+</mapper>
