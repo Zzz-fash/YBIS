@@ -139,4 +139,27 @@ public class ChatServiceImpl implements ChatService {
         return null;
     }
 
+    /**
+     * 查询未读数量
+     */
+    @Override
+    public Integer searchUnread(String sphone,String rphone){
+        ContactExample example  = new ContactExample();
+        example.createCriteria().andSenderIdEqualTo(sphone).andReceiverIdEqualTo(rphone).andStatusEqualTo(0);
+        return contactMapper.countByExample(example);
+    }
+
+    /**
+     * 修改状态
+     * @param id
+     * @return
+     */
+    @Override
+    public Integer updateStatus(Integer id) {
+        Contact contact = new Contact();
+        contact.setConId(id);
+        contact.setStatus(1);
+        return contactMapper.updateByPrimaryKeySelective(contact);
+    }
+
 }

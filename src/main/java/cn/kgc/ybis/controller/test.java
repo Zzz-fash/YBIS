@@ -1,7 +1,6 @@
 package cn.kgc.ybis.controller;
 
 import cn.kgc.ybis.mapper.ContactMapper;
-import cn.kgc.ybis.pojo.ContactExample;
 import cn.kgc.ybis.pojo.Teacher;
 import cn.kgc.ybis.pojo.User;
 import cn.kgc.ybis.pojo.Class;
@@ -33,7 +32,7 @@ public class test {
         return "forward:/contacts.do";
     }
 
-    @RequestMapping("login.do")
+    @RequestMapping("login1.do")
     public String login2(HttpSession session){
         Class c = new  Class();
         c.setcId(1);
@@ -54,5 +53,15 @@ public class test {
 //        example.or().andSenderIdEqualTo(1);
 //        System.out.println(chatService.selectByExample(example));
 //    }
+
+    @RequestMapping("index2.do")
+    public String test02(){
+        return "index";
+    }
+
+    @RequestMapping("index3.do")
+    public String test03(){
+      return "superManager";
+    }
 
 }

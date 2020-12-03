@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author 张通
@@ -43,7 +41,7 @@ public class JumpToController {
     }
     @RequestMapping("indexTwo.do")
     public String toIndexTwo(){
-        return "indexTwo";
+        return "superManager";
     }
     //-----------------页面跳转-------------
     @RequestMapping("notice_index.do")

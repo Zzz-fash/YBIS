@@ -28,4 +28,8 @@ public interface ChatService {
     Integer insertContent(Contact contact);
 
     Contact lastReceiveContact(String sphone,String rphone);
+
+    Integer searchUnread(String sphone,String rphone);
+
+    Integer updateStatus(Integer id);
 }

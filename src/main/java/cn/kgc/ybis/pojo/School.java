@@ -11,6 +11,16 @@ public class School {
 
     private String status;
 
+    private SchoolManager schoolManager;
+
+    public SchoolManager getSchoolManager() {
+        return schoolManager;
+    }
+
+    public void setSchoolManager(SchoolManager schoolManager) {
+        this.schoolManager = schoolManager;
+    }
+
     public Integer getsId() {
         return sId;
     }

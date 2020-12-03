@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +23,12 @@
             <div class="lxy_newsBook">
                 <p>最新园区公告</p>
                 <ul id="lxy_news_head">
+                    <c:forEach items="${notices_main}" var="notice_main">
+                        <li>
+                            <p>${notice_main.nName}：${notice_main.nContent}</p>
+                            <p>发布人:${notice_main.nUser}<span>${notice_main.nDate}</span> </p>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>
@@ -124,8 +131,10 @@
                 }
             ]
         };
+//-------------------------------- 公告内容---------------------
         myChart.setOption(option);
         var notices = [
+
             {
                 noticeIssuer:"毛亮",//发起人
                 noticeContent:"2018年秋季报名正式开始！新生成功报名交费送一个月特色课程（舞蹈、街舞、手工、钢琴任选其一）再送表情抱枕一个",//公告内容
@@ -149,7 +158,16 @@
                 noticeTime: "2018/9/1",//发布时间
                 noticeObj:1501,//发布对象
                 noticeImg:"<img src=\"../../static/images/main_images/face2.jpg\" alt=\"\">"
-            }]
+            },
+            {
+                noticeIssuer:"赖红梅",//发起人
+                noticeContent:"学校全体干部，教师职工均系考勤对象，由教务处负责考勤工作。各组、室设考勤员一名，（由组长担任），逐日记载出勤情况，按日统计，上报教务处汇总公布。",//公告内容
+                noticeType:"me",//公告类型：public（园区公告），class（班级公告），person(个人邮件)
+                noticeTime: "2018/9/1",//发布时间
+                noticeObj:1501,//发布对象
+                noticeImg:"<img src=\"../../static/images/main_images/face2.jpg\" alt=\"\">"
+            },
+            ]
         $(document).ready(function () {
             //数据公告
             for(let i=0;i<3;i++){

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.ybis.mapper.DynamicMapper" >
+  <resultMap id="BaseResultMap" type="cn.kgc.ybis.pojo.Dynamic" >
+    <id column="d_id" property="dId" jdbcType="INTEGER" />
+    <result column="d_name" property="dName" jdbcType="VARCHAR" />
+    <result column="d_date" property="dDate" jdbcType="TIMESTAMP" />
+    <result column="d_content" property="dContent" jdbcType="VARCHAR" />
+    <result column="d_img" property="dImg" jdbcType="VARCHAR" />
+    <result column="t_id" property="tId" jdbcType="INTEGER" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="sm_id" property="smId" jdbcType="INTEGER" />
+    <result column="com_id" property="comId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    d_id, d_name, d_date, d_content, d_img, t_id, u_id, sm_id, com_id, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.kgc.ybis.pojo.DynamicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dynamic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dynamic
+    where d_id = #{dId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dynamic
+    where d_id = #{dId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.kgc.ybis.pojo.DynamicExample" >
+    delete from dynamic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.kgc.ybis.pojo.Dynamic" >
+    insert into dynamic (d_id, d_name, d_date, 
+      d_content, d_img, t_id, 
+      u_id, sm_id, com_id, status
+      )
+    values (#{dId,jdbcType=INTEGER}, #{dName,jdbcType=VARCHAR}, #{dDate,jdbcType=TIMESTAMP}, 
+      #{dContent,jdbcType=VARCHAR}, #{dImg,jdbcType=VARCHAR}, #{tId,jdbcType=INTEGER}, 
+      #{uId,jdbcType=INTEGER}, #{smId,jdbcType=INTEGER}, #{comId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.kgc.ybis.pojo.Dynamic" >
+    insert into dynamic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dId != null" >
+        d_id,
+      </if>
+      <if test="dName != null" >
+        d_name,
+      </if>
+      <if test="dDate != null" >
+        d_date,
+      </if>
+      <if test="dContent != null" >
+        d_content,
+      </if>
+      <if test="dImg != null" >
+        d_img,
+      </if>
+      <if test="tId != null" >
+        t_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="smId != null" >
+        sm_id,
+      </if>
+      <if test="comId != null" >
+        com_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dId != null" >
+        #{dId,jdbcType=INTEGER},
+      </if>
+      <if test="dName != null" >
+        #{dName,jdbcType=VARCHAR},
+      </if>
+      <if test="dDate != null" >
+        #{dDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dContent != null" >
+        #{dContent,jdbcType=VARCHAR},
+      </if>
+      <if test="dImg != null" >
+        #{dImg,jdbcType=VARCHAR},
+      </if>
+      <if test="tId != null" >
+        #{tId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="smId != null" >
+        #{smId,jdbcType=INTEGER},
+      </if>
+      <if test="comId != null" >
+        #{comId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.kgc.ybis.pojo.DynamicExample" resultType="java.lang.Integer" >
+    select count(*) from dynamic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dynamic
+    <set >
+      <if test="record.dId != null" >
+        d_id = #{record.dId,jdbcType=INTEGER},
+      </if>
+      <if test="record.dName != null" >
+        d_name = #{record.dName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dDate != null" >
+        d_date = #{record.dDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dContent != null" >
+        d_content = #{record.dContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dImg != null" >
+        d_img = #{record.dImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tId != null" >
+        t_id = #{record.tId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uId != null" >
+        u_id = #{record.uId,jdbcType=INTEGER},
+      </if>
+      <if test="record.smId != null" >
+        sm_id = #{record.smId,jdbcType=INTEGER},
+      </if>
+      <if test="record.comId != null" >
+        com_id = #{record.comId,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dynamic
+    set d_id = #{record.dId,jdbcType=INTEGER},
+      d_name = #{record.dName,jdbcType=VARCHAR},
+      d_date = #{record.dDate,jdbcType=TIMESTAMP},
+      d_content = #{record.dContent,jdbcType=VARCHAR},
+      d_img = #{record.dImg,jdbcType=VARCHAR},
+      t_id = #{record.tId,jdbcType=INTEGER},
+      u_id = #{record.uId,jdbcType=INTEGER},
+      sm_id = #{record.smId,jdbcType=INTEGER},
+      com_id = #{record.comId,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.kgc.ybis.pojo.Dynamic" >
+    update dynamic
+    <set >
+      <if test="dName != null" >
+        d_name = #{dName,jdbcType=VARCHAR},
+      </if>
+      <if test="dDate != null" >
+        d_date = #{dDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dContent != null" >
+        d_content = #{dContent,jdbcType=VARCHAR},
+      </if>
+      <if test="dImg != null" >
+        d_img = #{dImg,jdbcType=VARCHAR},
+      </if>
+      <if test="tId != null" >
+        t_id = #{tId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="smId != null" >
+        sm_id = #{smId,jdbcType=INTEGER},
+      </if>
+      <if test="comId != null" >
+        com_id = #{comId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where d_id = #{dId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.kgc.ybis.pojo.Dynamic" >
+    update dynamic
+    set d_name = #{dName,jdbcType=VARCHAR},
+      d_date = #{dDate,jdbcType=TIMESTAMP},
+      d_content = #{dContent,jdbcType=VARCHAR},
+      d_img = #{dImg,jdbcType=VARCHAR},
+      t_id = #{tId,jdbcType=INTEGER},
+      u_id = #{uId,jdbcType=INTEGER},
+      sm_id = #{smId,jdbcType=INTEGER},
+      com_id = #{comId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where d_id = #{dId,jdbcType=INTEGER}
+  </update>
+</mapper>

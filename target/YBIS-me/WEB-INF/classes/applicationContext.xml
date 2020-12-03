@@ -40,6 +40,9 @@
         <property name="basePackage" value="cn.kgc.ybis.mapper"></property>
     </bean>
 
+    <!--包扫描-->
+    <context:component-scan base-package="cn.kgc.ybis.service"></context:component-scan>
+
     <!--配置事务-->
     <!--注册增强-->
     <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
@@ -57,7 +60,5 @@
         <aop:pointcut id="serviceMethod" expression="execution(* cn.kgc.ybis.service..*.*(..))"/>
         <aop:advisor advice-ref="txadvice" pointcut-ref="serviceMethod"/>
     </aop:config>
-    
-    <context:component-scan base-package="cn.kgc.ybis.service"></context:component-scan>
-
+<context:component-scan base-package="cn.kgc.ybis.service"></context:component-scan>
 </beans>

@@ -38,18 +38,20 @@ public class ChatController {
         Teacher teacher = (Teacher) session.getAttribute("teacher");
         //查询所有接收聊天记录
         String phone = (String) session.getAttribute("phone");
-        List<Contact> contacts = chatService.seacherContactByPhone(phone);
         //相关人员 (消息发送人)
         List<User> users = new ArrayList<User>();
         List<Teacher> teachers = new ArrayList<Teacher>();
         List<Contact> lastContent = new ArrayList<Contact>();
+        List<Integer> unreads = new ArrayList<Integer>();
         if (user != null) {
             model.addAttribute("role", "user");
             teachers = chatService.searchTeacherByCid(classes.getcId());
             model.addAttribute("receiver", teachers);
             //最后一条消息
             for (Teacher t : teachers) {
-                List<Contact> con = chatService.searchContactByOr(t.gettPhone(), phone);
+                List<Contact> con = chatService.searchContactByOr(t.gettPhone(), user.getuPhone());
+                Integer integer = chatService.searchUnread(t.gettPhone(), user.getuPhone());
+                unreads.add(integer);
                 if (con != null && con.size() > 0) {
                     lastContent.add(con.get(con.size() - 1));
                 } else {
@@ -59,6 +61,7 @@ public class ChatController {
                 }
             }
             model.addAttribute("lastContent",lastContent);
+            model.addAttribute("unreads",unreads);
         }
         if (teacher != null) {
             model.addAttribute("role", "teacher");
@@ -66,7 +69,9 @@ public class ChatController {
             model.addAttribute("receiver", users);
             //最后一条消息
             for (User u : users) {
-                List<Contact> con = chatService.searchContactByOr(u.getuPhone(), phone);
+                List<Contact> con = chatService.searchContactByOr(u.getuPhone(), teacher.gettPhone());
+                Integer integer = chatService.searchUnread(u.getuPhone(), teacher.gettPhone());
+                unreads.add(integer);
                 if (con != null && con.size() > 0) {
                     lastContent.add(con.get(con.size() - 1));
                 } else {
@@ -76,6 +81,7 @@ public class ChatController {
                 }
             }
             model.addAttribute("lastContent", lastContent);
+            model.addAttribute("unreads",unreads);
         }
         return "chat";
     }
@@ -89,6 +95,7 @@ public class ChatController {
     @RequestMapping("chat.do")
     @ResponseBody
     public Map<String,Object> chat(String phoneStr,HttpSession session) {
+        System.out.println("phoneStr"+phoneStr);
         Map<String,Object> map = new HashMap<String,Object>();
         //判断角色
         User user = (User)session.getAttribute("user");
@@ -97,7 +104,6 @@ public class ChatController {
         String phone = null;
         if (user != null) {
             phone = user.getuPhone();
-            System.out.println("phone"+phone);
             List<Teacher> teachers = chatService.seacherTeacherByPhone(phoneStr);
             map.put("role","user");
             map.put("account",teachers.get(0));
@@ -110,6 +116,9 @@ public class ChatController {
         }
         //查询聊天记录
         List<Contact> contacts = chatService.searchContactByOr(phone, phoneStr);
+        for (Contact contact : contacts) {
+            chatService.updateStatus(contact.getConId());
+        }
         map.put("contacts",contacts);
         return map;
     }
@@ -128,7 +137,7 @@ public class ChatController {
     }
 
     /**
-     * 接收消息
+     * 接收消息，刷新列表
      * @param sphone
      * @param time
      * @return
@@ -137,40 +146,78 @@ public class ChatController {
     @ResponseBody
     public Map<String,Object> receivemessages(String sphone,String time,HttpSession session){
         Map<String,Object> map = new HashMap<String,Object>();
-        System.out.println("sphone"+sphone);
+        //接收消息
         //查询聊天对象
         List<User> users = chatService.searchUserByPhone(sphone);
         List<Teacher> teachers = chatService.seacherTeacherByPhone(sphone);
+        String rphone = null;
         if (users != null && users.size() > 0) {
             map.put("account",users.get(0));
             map.put("role","user");
+            rphone = users.get(0).getuPhone();
         }
         if (teachers != null && teachers.size() > 0) {
             map.put("account",teachers.get(0));
             map.put("role","teacher");
+            rphone = teachers.get(0).gettPhone();
         }
         //查询接收到的最后一条记录
-        String rphone = (String)session.getAttribute("phone");
         Contact contact = chatService.lastReceiveContact(sphone, rphone);
-        if (contact == null){
-            return null;
-        }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        try {
-            Date parse = simpleDateFormat.parse(time);
-            System.out.println("time "+parse.getTime());
-            System.out.println("time "+parse);
-            System.out.println("time2 "+contact.getSendingtime().getTime());
-            System.out.println("time2 "+contact.getSendingtime());
-            if (contact.getSendingtime().getTime() - parse.getTime() > 0) {
-                System.out.println("contact"+contact);
-                map.put("contact",contact);
-                return map;
+        if (contact != null){
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            try {
+                Date parse = simpleDateFormat.parse(time);
+                //比较页面最后收到的消息时间和数据库消息时间
+                if (contact.getSendingtime().getTime() - parse.getTime() > 0) {
+                    map.put("contact",contact);
+                } else {
+                    map.put("contact",null);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } else {
+            map.put("contact",null);
         }
-        map.put("contact",null);
+        //刷新列表，查询是否有没读消息及数量
+        //判断角色
+        User user = (User) session.getAttribute("user");
+        Teacher teacher = (Teacher) session.getAttribute("teacher");
+        Class classes = (Class) session.getAttribute("class");
+        //未读数量
+        List<Integer> count = new ArrayList<Integer>();
+        //未读的最后一条消息
+        List<Contact> lastContact = new ArrayList<Contact>();
+        if(user != null){
+            teachers = chatService.searchTeacherByCid(classes.getcId());
+            for (Teacher t : teachers) {
+                Integer integer = chatService.searchUnread(t.gettPhone(),user.getuPhone());
+                count.add(integer);
+                if (integer > 0){
+                    Contact lastcontact = chatService.lastReceiveContact(t.gettPhone(), user.getuPhone());
+                    lastContact.add(lastcontact);
+                } else {
+                    lastContact.add(null);
+                }
+            }
+            map.put("count",count);
+            map.put("lastContact",lastContact);
+        }
+        if(teacher != null){
+            users = chatService.searchUserByCid(classes.getcId());
+            for(User u : users){
+                Integer integer = chatService.searchUnread(u.getuPhone(),teacher.gettPhone());
+                count.add(integer);
+                if (integer > 0){
+                    Contact lastcontact = chatService.lastReceiveContact(u.getuPhone(), teacher.gettPhone());
+                    lastContact.add(lastcontact);
+                } else {
+                    lastContact.add(null);
+                }
+            }
+            map.put("count",count);
+            map.put("lastContact",lastContact);
+        }
         return map;
     }
 }

@@ -75,11 +75,6 @@
                         <i class="ri-message-3-line"></i>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="Groups">
-                    <a class="nav-link" id="pills-groups-tab" data-toggle="pill" href="#pills-groups" role="tab">
-                        <i class="ri-group-line"></i>
-                    </a>
-                </li>
                 <li class="nav-item" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="Contacts">
                     <a class="nav-link" id="pills-contacts-tab" data-toggle="pill" href="#pills-contacts" role="tab">
                         <i class="ri-contacts-line"></i>
@@ -395,11 +390,15 @@
 
                     <!-- Start chat-message-list -->
                     <div class="px-2">
-                        <h5 class="mb-3 px-3 font-size-16">任课老师列表</h5>
-
+                        <c:if test="${role eq 'user'}">
+                            <h5 class="mb-3 px-3 font-size-16">任课老师列表</h5>
+                        </c:if>
+                        <c:if test="${role eq 'teacher'}">
+                            <h5 class="mb-3 px-3 font-size-16">学生家长</h5>
+                        </c:if>
                         <div class="chat-message-list" data-simplebar>
 
-                            <ul class="list-unstyled chat-list chat-user-list">
+                            <ul id="accounts" class="list-unstyled chat-list chat-user-list">
 
                                 <c:forEach items="${receiver}" var="account" varStatus="i">
                                     <li>
@@ -428,6 +427,14 @@
                                                     <p class="chat-user-message text-truncate mb-0">${lastContent[i.index].content}</p>
                                                 </div>
                                                 <div class="font-size-11"><fmt:formatDate type="both" dateStyle="medium" timeStyle="medium" value="${lastContent[i.index].sendingtime}" /></div>
+                                                <div class="unread-message">
+                                                    <c:if test="${unreads[i.index] > 0}">
+                                                        <span class="badge badge-soft-danger badge-pill">${unreads[i.index]}</span>
+                                                    </c:if>
+                                                    <c:if test="${unreads[i.index] < 1}">
+                                                        <span style="display: none" class="badge badge-soft-danger badge-pill"></span>
+                                                    </c:if>
+                                                </div>
                                             </div>
                                         </a>
                                     </li>
@@ -1870,6 +1877,7 @@
 
                 <!-- start chat conversation -->
                 <div class="chat-conversation p-3 p-lg-4" data-simplebar="init">
+
                     <ul id="allcontent" class="list-unstyled mb-0">
 <%--                        <li>--%>
 <%--                            <div class="conversation-list">--%>
@@ -2522,6 +2530,21 @@
 <script type="text/javascript" src="/static/assets/js/jquery-1.7.2.min.js"></script>
 <script>
     $(function () {
+        Date.prototype.Format = function (fmt) {
+            var o = {
+                "M+": this.getMonth() + 1, //月份
+                "d+": this.getDate(), //日
+                "H+": this.getHours(), //小时
+                "m+": this.getMinutes(), //分
+                "s+": this.getSeconds(), //秒
+                "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+                "S": this.getMilliseconds() //毫秒
+            };
+            if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            for (var k in o)
+                if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            return fmt;
+        }
         //点击列表，用户选中，查询一对一聊天记录
         $(".wicket").click(function () {
             //显示聊天框
@@ -2533,6 +2556,7 @@
             var phone = $(this).attr("phone");
             //查询一对一聊天记录，并显示
             $.getJSON("/chat.do?phoneStr="+phone,function (map) {
+                $("li[class='active'] .unread-message span").hide();
                 if (map.role == "user") {
                     $("#headportrait").html("<img src='"+map.account.tPath+"' class='rounded-circle avatar-xs' alt=''>");
                     $("#headportraitname").text(map.account.tName);
@@ -2560,17 +2584,6 @@
                             "                                            <p class=\"mb-0\">\n" +value.content+"\n" +
                             "                                            </p>\n" +
                             "                                            <p class=\"chat-time mb-0\"><i class=\"ri-time-line align-middle\"></i> <span class=\"align-middle\">"+value.sendingtime+"</span></p>\n" +
-                            "                                        </div>\n" +
-                            "                                        <div class=\"dropdown align-self-start\">\n" +
-                            "                                            <a class=\"dropdown-toggle\"  role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n" +
-                            "                                                <i class=\"ri-more-2-fill\"></i>\n" +
-                            "                                            </a>\n" +
-                            "                                            <div class=\"dropdown-menu\">\n" +
-                            "                                                <a class=\"dropdown-item\">复制 <i class=\"ri-file-copy-line float-right text-muted\"></i></a>\n" +
-                            "                                                <a class=\"dropdown-item\">保存 <i class=\"ri-save-line float-right text-muted\"></i></a>\n" +
-                            "                                                <a class=\"dropdown-item\">分享 <i class=\"ri-chat-forward-line float-right text-muted\"></i></a>\n" +
-                            "                                                <a  class=\"dropdown-item delete\">删除 <i class=\"ri-delete-bin-line float-right text-muted\"></i></a>\n" +
-                            "                                            </div>\n" +
                             "                                        </div>\n" +
                             "                                    </div>\n" +
                             "                                    <div class=\"conversation-name\">"+locationName+"</div>\n" +
@@ -2607,17 +2620,6 @@
                                 "                                            </p>\n" +
                                 "                                            <p class=\"chat-time mb-0\"><i class=\"ri-time-line align-middle\"></i> <span class=\"align-middle\">"+value.sendingtime+"</span></p>\n" +
                                 "                                        </div>\n" +
-                                "                                        <div class=\"dropdown align-self-start\">\n" +
-                                "                                            <a class=\"dropdown-toggle\"  role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n" +
-                                "                                                <i class=\"ri-more-2-fill\"></i>\n" +
-                                "                                            </a>\n" +
-                                "                                            <div class=\"dropdown-menu\">\n" +
-                                "                                                <a class=\"dropdown-item\" >复制 <i class=\"ri-file-copy-line float-right text-muted\"></i></a>\n" +
-                                "                                                <a class=\"dropdown-item\" >保存 <i class=\"ri-save-line float-right text-muted\"></i></a>\n" +
-                                "                                                <a class=\"dropdown-item\" >分享 <i class=\"ri-chat-forward-line float-right text-muted\"></i></a>\n" +
-                                "                                                <a class=\"dropdown-item delete\" >删除 <i class=\"ri-delete-bin-line float-right text-muted\"></i></a>\n" +
-                                "                                            </div>\n" +
-                                "                                        </div>\n" +
                                 "                                    </div>\n" +
                                 "                                    <div class=\"conversation-name\">"+locationName+"</div>\n" +
                                 "                                </div>\n" +
@@ -2625,6 +2627,7 @@
                                 "                        </li>");
                     });
                 }
+                $(".simplebar-content-wrapper").scrollTop(1000000);
                 receivemessages();
             });
         });
@@ -2661,29 +2664,23 @@
                     "                                            </p>\n" +
                     "                                            <p class=\"chat-time mb-0\"><i class=\"ri-time-line align-middle\"></i> <span class=\"align-middle\">"+"刚刚"+"</span></p>\n" +
                     "                                        </div>\n" +
-                    "                                        <div class=\"dropdown align-self-start\">\n" +
-                    "                                            <a class=\"dropdown-toggle\"  role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n" +
-                    "                                                <i class=\"ri-more-2-fill\"></i>\n" +
-                    "                                            </a>\n" +
-                    "                                            <div class=\"dropdown-menu\">\n" +
-                    "                                                <a class=\"dropdown-item\" >复制 <i class=\"ri-file-copy-line float-right text-muted\"></i></a>\n" +
-                    "                                                <a class=\"dropdown-item\" >保存 <i class=\"ri-save-line float-right text-muted\"></i></a>\n" +
-                    "                                                <a class=\"dropdown-item\" >分享 <i class=\"ri-chat-forward-line float-right text-muted\"></i></a>\n" +
-                    "                                                <a class=\"dropdown-item delete\" >删除 <i class=\"ri-delete-bin-line float-right text-muted\"></i></a>\n" +
-                    "                                            </div>\n" +
-                    "                                        </div>\n" +
                     "                                    </div>\n" +
                     "                                    <div class=\"conversation-name\">"+locationName+"</div>\n" +
                     "                                </div>\n" +
                     "                            </div>\n" +
                     "                        </li>");
+                $(".simplebar-content-wrapper").scrollTop($(".simplebar-content-wrapper")[0].scrollHeight);
                 $("#content").val("");
+                $("li[class='active'] p").text(content);
+                var startDate = new Date().Format("yyyy-MM-dd HH:mm:ss");
+                $("li[class='active'] .font-size-11").text(startDate);
+                //滚动条定位到最底部
+                $(".simplebar-content-wrapper").scrollTop(100000000000);
                 $.getJSON("/addContent.do?content="+content+"&rphone="+phone,function () {
-
                 });
             }
         });
-        //实时接收消息
+        //实时接收消息，刷新列表
         function receivemessages() {
             var time = $("li[class='left'] span").last().text();
             var phone = $("li[class='active'] a").attr("phone");
@@ -2713,28 +2710,29 @@
                         "                                            </p>\n" +
                         "                                            <p class=\"chat-time mb-0\"><i class=\"ri-time-line align-middle\"></i> <span class=\"align-middle\">"+map.contact.sendingtime+"</span></p>\n" +
                         "                                        </div>\n" +
-                        "                                        <div class=\"dropdown align-self-start\">\n" +
-                        "                                            <a class=\"dropdown-toggle\"  role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n" +
-                        "                                                <i class=\"ri-more-2-fill\"></i>\n" +
-                        "                                            </a>\n" +
-                        "                                            <div class=\"dropdown-menu\">\n" +
-                        "                                                <a class=\"dropdown-item\" >复制 <i class=\"ri-file-copy-line float-right text-muted\"></i></a>\n" +
-                        "                                                <a class=\"dropdown-item\" >保存 <i class=\"ri-save-line float-right text-muted\"></i></a>\n" +
-                        "                                                <a class=\"dropdown-item\" >分享 <i class=\"ri-chat-forward-line float-right text-muted\"></i></a>\n" +
-                        "                                                <a class=\"dropdown-item delete\" >删除 <i class=\"ri-delete-bin-line float-right text-muted\"></i></a>\n" +
-                        "                                            </div>\n" +
-                        "                                        </div>\n" +
                         "                                    </div>\n" +
                         "                                    <div class=\"conversation-name\">"+locationName+"</div>\n" +
                         "                                </div>\n" +
                         "                            </div>\n" +
                         "                        </li>");
+                    $("li[class='active'] p").text(map.contact.content);
+                    $("li[class='active'] .font-size-11").text(map.contact.sendingtime);
+                    $(".simplebar-content-wrapper").scrollTop(10000000);
+                }
+                var accounts = $("#accounts li");
+                for(var i = 0; i < accounts.length; i++ ){
+                    if(map.count[i] > 0){
+                        alert("进来了");
+                        $("#accounts").children("li:eq("+i+")").find("span").css("display","inline");
+                        $("#accounts").children("li:eq("+i+")").find("span").text(map.count[i]);
+                        $("#accounts").children("li:eq("+i+")").find("p").text(map.lastContact[i].content);
+                        $("#accounts").children("li:eq("+i+")").find(".font-size-11").text(map.lastContact[i].sendingtime);
+                    }
                 }
             });
             setTimeout(receivemessages,10000);
         }
-        //删除记录
-
     });
+
 </script>
 </html>
