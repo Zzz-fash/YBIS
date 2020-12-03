@@ -31,7 +31,7 @@ public class JumpToController {
         Integer smId=1;
         Integer status=1;
         //根据steam流将notice进行根据时间排序
-        List<Notice> notices = noticeService.selectByExample(tId, smId, status);
+        List<Notice> notices = noticeService.selectByExampleByschool(smId, status);
         //新建一个list 取最新3条数据显示到main页面
         ArrayList<Notice> notices_main = new ArrayList<>();
         for(int j=0;j<3;j++){
@@ -46,10 +46,7 @@ public class JumpToController {
         return "indexTwo";
     }
     //-----------------页面跳转-------------
-    @RequestMapping("notice_index.do")
-    public String to_notice_index(){
-        return "notice_index";
-    }
+
     @RequestMapping("form_file_upload.do")
     public String to_form_file_upload(){
         return "form_file_upload";

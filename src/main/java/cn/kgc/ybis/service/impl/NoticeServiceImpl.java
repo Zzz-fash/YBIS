@@ -18,19 +18,11 @@ import java.util.stream.Collectors;
 public class NoticeServiceImpl implements NoticeService{
     @Autowired
     NoticeMapper nm;
-    //根据条件查出公告
+    //根据smId条件查看学校公告
     @Override
-    public List<Notice> selectByExample(Integer tId, Integer smId,Integer status) {
+    public List<Notice> selectByExampleByschool( Integer smId,Integer status) {
         NoticeExample noticeExample = new NoticeExample();
-        //当tid，smId，不为空，status，为1的公告
-        if(tId!=null&&smId!=null&&status==1){
-            noticeExample.createCriteria().andTIdEqualTo(tId).andSmIdEqualTo(smId);
-        }
-        if(tId==null||tId==0){
-            if(status==1){
-                noticeExample.createCriteria().andSmIdEqualTo(smId);
-            }
-        }
+        noticeExample.createCriteria().andSmIdEqualTo(smId).andStatusEqualTo(status);
         List<Notice> notices = nm.selectByExample(noticeExample);
         List<Notice> noticeList = notices.stream().sorted((e1, e2) -> {
                     int compareTo = e1.getnDate().compareTo(e2.getnDate());
@@ -39,6 +31,20 @@ public class NoticeServiceImpl implements NoticeService{
         ).collect(Collectors.toList());
         return noticeList;
     }
+    //根据tId条件查询本班级所有的公告
+    @Override
+    public List<Notice> selectByExampleByClass(Integer tId, Integer status) {
+        NoticeExample noticeExample = new NoticeExample();
+        noticeExample.createCriteria().andTIdEqualTo(tId).andStatusEqualTo(status);
+        List<Notice> notices = nm.selectByExample(noticeExample);
+        List<Notice> noticeList = notices.stream().sorted((e1, e2) -> {
+                    int compareTo = e1.getnDate().compareTo(e2.getnDate());
+                    return -compareTo;
+                }
+        ).collect(Collectors.toList());
+        return noticeList;
+    }
+
     //添加一条公告
     @Override
     public Boolean insertNotice(Notice notice) {

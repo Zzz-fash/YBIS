@@ -54,7 +54,6 @@
                     <div id="notice_public_content" class="notice_content">
                     </div>
                 </li>
-
                 <li>
                     <div class="img"><img src="../../static/images/notice_images/timg.jpg" alt=""></div>
                     <a href="#">班级公告 <i class="iconfont icon-notice"></i></a>
@@ -63,9 +62,7 @@
                         <input type="button" value="查询" id="notice_class_button">
                     </div>
                     <div id="notice_class_content" class="notice_content">
-
                     </div>
-
                 </li>
                 <li>
                     <div class="img"><img src="../../static/images/notice_images/timg.jpg" alt=""></div>
@@ -110,7 +107,81 @@
 </div>
 <script src="../../static/lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
 <script src="../../static/lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
-<script src="../../static/js/DATE_index.js"></script>
+<script type="text/javascript">
+    var notices = [
+        {
+            noticeIssuer:"张通",//发起人
+            noticeHead:"face3.jpg",//发起人头像
+            noticeContent:"2018年秋季报名正式开始！新生成功报名交费送一个月特色课程（舞蹈、街舞、手工、钢琴任选其一）再送表情抱枕一个",//公告内容
+            noticeContentImg:"",//内容图片
+            noticeType:"public",//公告类型：public（园区公告），class（班级公告），person(个人邮件)
+            noticeTime: "2018/8/15",//发布时间
+            noticeObj:1801//发布对象
+        },{
+            noticeIssuer:"超级管理员",//发起人
+            noticeHead:"face4.jpg",//发起人头像
+            noticeContent:"2018年秋季报名正式开始！新生成功报名交费送一个月特色课程（舞蹈、街舞、手工、钢琴任选其一）再送表情抱枕一个",//公告内容
+            noticeContentImg:"",//内容图片
+            noticeType:"public",//公告类型：public（园区公告），class（班级公告），person(个人邮件)
+            noticeTime: "2018/8/15",//发布时间
+            noticeObj:1801//发布对象
+        },
+        {
+            noticeIssuer:"张通",//发起人
+            noticeHead:"face2.jpg",//发起人头像
+            noticeContent:"各组、室设考勤员一名，（由组长担任），逐日记载出勤情况，按日统计，上报教务处汇总公布。",//公告内容
+            noticeContentImg:"",//内容图片
+            noticeType:"class",//公告类型：public（园区公告），class（班级公告），person(个人邮件)
+            noticeTime: "2018/9/1",//发布时间
+            noticeObj:1802//发布对象
+        },
+        {
+            noticeIssuer:"罗喜洋",//发起人
+            noticeHead:"face4.jpg",//发起人头像
+            noticeContent:"因工作需要，决定对萌宝幼儿园人事作如下调整：任命毛亮为营业部部长，全面负责营业部工作。园长级，营口地区班子成员。",//公告内容
+            noticeContentImg:"",//内容图片
+            noticeType:"public",//公告类型：public（园区公告），class（班级公告），person(个人邮件)
+            noticeTime: "2018/12/1",//发布时间
+            noticeObj:1//发布对象
+        },
+        {
+            noticeIssuer:"毛亮",//发起人
+            noticeHead:"face3.jpg",//发起人头像
+            noticeContent:"由教务处负责考勤工作。各组、室设考勤员一名，（由组长担任），逐日记载出勤情况，按日统计，上报教务处汇总公布。",//公告内容
+            noticeContentImg:"",//内容图片
+            noticeType:"class",//公告类型：public（园区公告），class（班级公告），person(个人邮件)
+            noticeTime: "2018/9/1",//发布时间
+            noticeObj:1801//发布对象
+        },
+        {
+            noticeIssuer:"毛亮",//发起人
+            noticeHead:"face3.jpg",//发起人头像
+            noticeContent:"希望能与您就孩子的成长教育问题做一次良好的沟通。你的建议是我们的收获，让我们为孩子撑起一片天空。",//公告内容
+            noticeContentImg:"",//内容图片
+            noticeType:"public",//公告类型：public（园区公告），class（班级公告），person(个人邮件)
+            noticeTime: "2018/12/1",//发布时间
+            noticeObj:1//发布对象
+        },
+        {
+            noticeIssuer:"罗喜洋",//发起人
+            noticeHead:"face4.jpg",//发起人头像
+            noticeContent:"你的建议是我们的收获，让我们为孩子撑起一片天空。希望能与您就孩子的成长教育问题做一次良好的沟通。",//公告内容
+            noticeContentImg:"",//内容图片
+            noticeType:"class",//公告类型：public（园区公告），class（班级公告），person(个人邮件)
+            noticeTime: "2018/12/7",//发布时间
+            noticeObj:1802//发布对象
+        },
+        {
+            noticeIssuer:"毛亮",//发起人
+            noticeHead:"face3.jpg",//发起人头像
+            noticeContent:"各组、室设考勤员一名，（由组长担任），逐日记载出勤情况，按日统计，上报教务处汇总公布。",//公告内容
+            noticeContentImg:"",//内容图片
+            noticeType:"class",//公告类型：public（园区公告），class（班级公告），person(个人邮件)
+            noticeTime: "2018/9/1",//发布时间
+            noticeObj:1801//发布对象
+        }
+        ];
+</script>
 <script src="../../static/js/notice.js"></script>
 </body>
 </html>

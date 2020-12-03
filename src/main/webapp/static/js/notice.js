@@ -1,13 +1,13 @@
 
 var noticeIssuer = JSON.parse(sessionStorage.getItem("Duty_Name"));
 
-
 //显示公告
 function notice_display(notice_input_class,notice_input_issue){
     $(".notice_content").html("")
     //根据main中公告不同的类型显示不同的内容
     notices.forEach(function (notice_obj) {
-        if(notice_obj.noticeType=="${}"){
+
+        if(notice_obj.noticeType=="public"){
             notice_display_detail("public");
         }
         if(notice_obj.noticeType=="class"){

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author zt
@@ -30,8 +31,9 @@ public class NoticeController {
         String n_name = request.getParameter("n_name");
         notice.setnName(n_name);
         notice.setnContent(request.getParameter("n_content"));
+        //调用发送公告的方法
         Boolean aBoolean = noticeService.insertNotice(notice);
-        System.out.println(notice.toString());
+        //发送成功之后分别查询出来，前三条
         if(aBoolean){
             request.setAttribute("sendMsg","发送成功！");
             return "notice_index";
@@ -41,8 +43,21 @@ public class NoticeController {
         }
 
     }
-    //首页公告展示
-
+    //发送公告页面，显示已发送公告信息
+    @RequestMapping("notice_index.do")
+    public String to_notice_index(HttpSession session, Notice notice, HttpServletRequest request, HttpServletResponse response){
+        //学校公告
+        //模拟数据从session中获取
+        List<Notice> schoolNotices = noticeService.selectByExampleByschool(1, 1);
+        //发送到前端
+        request.setAttribute("schoolNotices",schoolNotices);
+        //班级公告
+        List<Notice> classNotices = noticeService.selectByExampleByClass(1, 1);
+        //发送到前端
+        request.setAttribute("classNotices",classNotices);
+        //我的公告==班级公告
+        return "notice_index";
+    }
 
 
 

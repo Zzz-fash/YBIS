@@ -1,4 +1,4 @@
-var notices = [
+/*var notices = [
     {
         noticeIssuer:"毛亮",//发起人
         noticeHead:"face3.jpg",//发起人头像
@@ -7,6 +7,7 @@ var notices = [
         noticeType:"public",//公告类型：public（园区公告），class（班级公告），person(个人邮件)
         noticeTime: "2018/8/15",//发布时间
         noticeObj:1801//发布对象
+
     },{
         noticeIssuer:"超级管理员",//发起人
         noticeHead:"face4.jpg",//发起人头像
@@ -70,7 +71,7 @@ var notices = [
         noticeTime: "2018/9/1",//发布时间
         noticeObj:1801//发布对象
     }
-]
+]*/
 var student = [
     {
         studentId:"180101",
@@ -270,7 +271,7 @@ var teacher = [
     {
         teacherId:"180101",
         photo:"images/main_images/face3.jpg",//头像
-        teacherName:"毛亮",
+        teacherName:"张通",
         teacherAge:"30",
         teacherSex:"男",
         teacherBirth:"1990/01/01",

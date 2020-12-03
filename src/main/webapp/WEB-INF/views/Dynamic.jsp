@@ -61,7 +61,7 @@
                 <li>
                     <div class="img"><img src="../../static/images/notice_images/timg.jpg" alt=""></div>
                     <a href="#">园区动态 <i class="iconfont icon-notice"></i></a>
-                    <div id="notice_public_content" class="notice_content">
+                    <div class="notice_content">
                     </div>
                 </li>
 
@@ -72,7 +72,7 @@
                         <input type="text" placeholder="请输入查看的班级" id="notice_class_text">
                         <input type="button" value="查询" id="notice_class_button">
                     </div>
-                    <div id="notice_class_content" class="notice_content">
+                    <div  class="notice_content">
 
                     </div>
                 </li>
@@ -83,8 +83,7 @@
                         <input type="text" placeholder="请输入查看的动态" id="notice_issue_text">
                         <input type="button" value="查询" id="notice_issue_button">
                     </div>
-                    <div id="notice_issue_content" class="notice_content">
-
+                    <div class="notice_content">
                     </div>
                 </li>
             </ul>

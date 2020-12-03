@@ -28,7 +28,7 @@ public class Test_zt {
    //查询功能
     @Test
     public void noticeTest01(){
-        List<Notice> notices = noticeService.selectByExample(null, 1,1);
+        List<Notice> notices = noticeService.selectByExampleByschool( 1,1);
         for (Notice notice : notices) {
             System.out.println(notice.toString());
         }
